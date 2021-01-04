@@ -79,6 +79,7 @@ label {
 
 #configuracion-curso #numTest {    
     width: 4rem;    
+    text-align: center;
 }
 
 #configuracion-curso .custom-checkbox,
