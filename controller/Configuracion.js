@@ -63,8 +63,7 @@ function crearCurso(req, res) {
 
             // Crear los ficheros necesarios del curso
             let source = "curso/fuentes/UF0000";
-            let destination = "curso/curso";
-            fse.copySync(source + "/animaciones", destination + "/animaciones")
+            let destination = "curso/curso";            
             return fse.copy(source, destination);                             
 
       })      
