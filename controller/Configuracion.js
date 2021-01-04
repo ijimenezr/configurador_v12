@@ -63,6 +63,10 @@ function crearCurso(req, res) {
             // Crear los ficheros necesarios del curso
             let source = "curso/fuentes/UF0000/";
             let destination = "curso/curso/";            
+
+            let folder = ['animaciones', 'audios', 'css', 'descargas','documentos', 'imagenes/contenids', 'imagenes/portadas','videos']            
+            folder.forEach(element => fse.ensureDirSync(`${source}/${element}`));
+            
             return fse.copy(source, destination);                             
 
       })      
@@ -139,7 +143,7 @@ function crearCurso(req, res) {
             
       })
       .then(result => res.send({titulo, config}))
-      .catch((error) => res.status(404).send(error))
+      .catch((error) => {console.log(error); res.status(404).send(error)})
 } 
 
 function nombreApartado(unidad, apartado) {
