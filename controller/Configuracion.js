@@ -65,10 +65,11 @@ function crearCurso(req, res) {
             let source = "curso/fuentes/UF0000";
             let destination = "curso/curso";
             return fse.copy(source, destination);                 
+            return fse.mkdirs(source, destination);                 
 
       })      
       .then(() => {                                                   
-
+console.log("2");
             // Eliminar ficheros no necesarios
             fse.removeSync('curso/curso/apartado.html');
             fse.removeSync('curso/curso/evaluacion.html');

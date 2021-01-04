@@ -77,8 +77,8 @@ label {
     margin-top: 6rem;
 }
 
-#configuracion-curso #num-test {
-    width: auto;
+#configuracion-curso #numTest {    
+    width: 4rem;    
 }
 
 #configuracion-curso .custom-checkbox,
@@ -108,7 +108,7 @@ label {
     border: 1px solid var(--gris-1);
     padding: 2rem;    
     background-color: var(--background-2);
-    border-radius: 1.5rem;    
+    border-radius: 3px;    
 }
 
 #configuracion-curso #unidades .unidad .content input[type="text"] {
