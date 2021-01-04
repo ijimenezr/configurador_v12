@@ -58,17 +58,16 @@ function crearCurso(req, res) {
 
       // Eliminar la carpeta para volver a crear un curso
       fse.emptyDir('curso/curso')
-      .then(() => {
-            console.log("1");
+      .then(() => {           
 
             // Crear los ficheros necesarios del curso
-            let source = "curso/fuentes/UF0000";
-            let destination = "curso/curso";            
+            let source = "curso/fuentes/UF0000/";
+            let destination = "curso/curso/";            
             return fse.copy(source, destination);                             
 
       })      
       .then(() => {                                                   
-console.log("2");
+
             // Eliminar ficheros no necesarios
             fse.removeSync('curso/curso/apartado.html');
             fse.removeSync('curso/curso/evaluacion.html');
