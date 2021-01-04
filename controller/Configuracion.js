@@ -59,13 +59,15 @@ function crearCurso(req, res) {
       // Eliminar la carpeta para volver a crear un curso
       fse.emptyDir('curso/curso')
       .then(() => {           
-
+            console.log(process.env.NODE_ENV);
             // Crear los ficheros necesarios del curso
             let source = "curso/fuentes/UF0000/";
             let destination = "curso/curso/";            
 
-            let folder = ['animaciones', 'audios', 'css', 'descargas','documentos', 'imagenes/contenids', 'imagenes/portadas','videos']            
-            folder.forEach(element => fse.ensureDirSync(`${source}/${element}`));
+            if (process.env.NODE_ENV !== "dev") {                  
+                  let folder = ['animaciones', 'audios', 'css', 'descargas','documentos', 'imagenes/contenidos', 'imagenes/portadas','videos']            
+                  folder.forEach(element => fse.ensureDirSync(`${source}/${element}`));
+            }            
             
             return fse.copy(source, destination);                             
 
