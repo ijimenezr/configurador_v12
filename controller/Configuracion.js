@@ -59,6 +59,7 @@ function crearCurso(req, res) {
       // Eliminar la carpeta para volver a crear un curso
       fse.emptyDir('curso/curso')
       .then(() => {
+            console.log("1");
 
             // Crear los ficheros necesarios del curso
             let source = "curso/fuentes/UF0000";
