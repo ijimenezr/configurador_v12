@@ -1,0 +1,169 @@
+<%- include('templates/header') %>
+
+
+<div id="configuracion-curso">
+
+
+    <nav class="menu">  
+        <div class="container">
+            <a href="#general" class="btn btn-outline-primary active">Configuración del curso</a>
+            <a href="#unidades" class="btn btn-outline-primary">Unidades <span class="badge badge-light">1</a> 
+            <div class="form-group buscar">
+                <label for="ir-a-unidad">Ir a unidad</label>    
+                <input type="number" min="1" name="ir-a-unidad" id="ir-a-unidad" class="form-control">
+            </div>
+        </div>      
+    </nav>
+
+
+
+    <div class="container">        
+        
+        <h1><%= tituloPantalla %></h1>
+
+        <form action="/configuracion" class="needs-validation" method="POST" id="form-configuracion" novalidate>
+
+            <div id="general">
+
+                <h2>Configuración general</h2>
+
+                <!-- NOMBRE DEL CURSO -->
+                <div class="form-group">
+                    <label for="tituloCurso">Nombre del curso</label>
+                    <input type="text" name="tituloCurso" id="tituloCurso" class="form-control" placeholder="Nombre del curso" required>
+                </div>
+
+                <!-- NÚMERO DE TEST DE EVALUACIÓN FINAL -->
+                <div class="form-group">
+                    <label for="num-test">Número de test de evaluación final</label>
+                    <input type="number" name="numTest" id="numTest" class="form-control" placeholder="1">
+                </div>
+
+                <!-- BIBLIOGRAFÍA Y GLOSARIO -->
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="check-biblio" checked="checked">
+                        <label class="custom-control-label" for="check-biblio">
+                            Bibliografía
+                        </label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="check-glosario" checked="checked">
+                        <label class="custom-control-label" for="check-glosario">
+                            Glosario
+                        </label>
+                    </div>
+                </div>
+
+                <!-- TEMA -->
+                <div class="form-group">                   
+                    
+                    <div class="content-select" data-name="tema">                        
+                        <label>Tema</label>
+                        <a class="btn btn-select" href="#collapseTemas">
+                            <span class="element"></span>
+                            <i class="fas fa-angle-down icon"></i>
+                        </a>                            
+                        <div class="collapse" id="collapseTemas">
+                            <div class="card card-body">                                   
+                                <div class="element">
+                                    <span class="texto" data-value="colores-default">Clásico</span> 
+                                    <span class="color" style="background-color: #128585;"></span>
+                                    <span class="color" style="background-color: #225A5A;"></span>
+                                    <span class="color" style="background-color: #5FE6E6;"></span>
+                                    <span class="color" style="background-color: #B4E9E9;"></span> 
+                                </div>
+                                <div class="element">
+                                    <span class="texto" data-value="colores-1">Otoño</span>
+                                    <span class="color" style="background-color: #CC7810;"></span>
+                                    <span class="color" style="background-color: #FF8E00;"></span>
+                                    <span class="color" style="background-color: #FFAA40;"></span>
+                                    <span class="color" style="background-color: #FED9AD;"></span>
+                                </div>                       
+                                <div class="element">
+                                    <span class="texto" data-value="colores-2">Chicle</span>
+                                    <span class="color" style="background-color: #B32045;"></span>
+                                    <span class="color" style="background-color: #E92657;"></span>
+                                    <span class="color" style="background-color: #FF2E63;"></span>
+                                    <span class="color" style="background-color: #F5ADBF;"></span>
+                                </div> 
+                                <div class="element">
+                                    <div class="texto" data-value="colores-3">Oliva</div>                                    
+                                    <div class="color" style="background-color: #005900;"></div>
+                                    <div class="color" style="background-color: #007804;"></div>
+                                    <div class="color" style="background-color: #26E967;"></div>
+                                    <div class="color" style="background-color: #B8D6A4;"></div>
+                                </div>
+                                <div class="element">
+                                    <div class="texto" data-value="colores-4">Oceano</div>
+                                    <div class="color" style="background-color: #4F6D77;"></div>
+                                    <div class="color" style="background-color: #319ABC;"></div>
+                                    <div class="color" style="background-color: #61D8FF;"></div>
+                                    <div class="color" style="background-color: #B2DEEC;"></div>
+                                </div>        
+                                <div class="element">
+                                    <div class="texto" data-value="colores-5">Místico</div>
+                                    <div class="color" style="background-color: #4A266A;"></div>
+                                    <div class="color" style="background-color: #7F4A88;"></div>
+                                    <div class="color" style="background-color: #F64CA2"></div>
+                                    <div class="color" style="background-color: #FFD9E8;"></div>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>                    
+                </div>
+            </div>
+
+            <!-- UNIDADES -->
+            <div id="unidades">
+                <h2>Unidades</h2>
+
+                <!-- UNIDAD -->                
+                <div class="unidad" id="ud-1">
+                    <span class="numUnidad">01</span>
+                    <div class="content">
+                        <div class="form-group">
+                            <label for="unidad-1">Nombre de la unidad</label>
+                            <input type="text" class="form-control" name="unidad-1" id="unidad-1" placeholder="Nombre de la unidad" required>                        
+                        </div>
+
+                        <!-- APARTADOS -->
+                        <div class="apartados">
+                            <div class="form-group apartado">
+                                <label for="unidad-1-apartado-1">Nombre del apartado</label> <small class="text-muted ml-1 font-italic">ap01010101.html</small>
+                                <input type="text" class="form-control" name="unidad-1-apartado-1" id="unidad-1-apartado-1" placeholder="Nombre del apartado" required>                          
+                            </div>                            
+                        </div>
+                        <button type="button" class="btn btn-link insertar-apartado"><i class="fas fa-plus"></i> Insertar apartado</button>
+
+                        <!-- EJERCICIOS DE AUTOEVALUACIÓN -->
+                        <div class="form-group ejercicios">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" name="ejercicios-1" id="ejercicios-1" checked="checked">
+                                <label class="custom-control-label" for="ejercicios-1">
+                                    Ejercicios de autoevaluación
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-link" id="insertar-unidad"><i class="fas fa-plus"></i> Insertar unidad</button>
+
+
+            </div>
+            <div class="content-bottom">
+                <button type="submit" class="btn btn-primary" title="Generar curso" data-toggle="tooltip" data-placement="left"><i class="far fa-save"></i></button>                 
+                <button type="button" class="btn btn-primary" title="Cargar fichero de configuración" data-toggle="tooltip" data-placement="right" id="cargar-config"><i class="fas fa-file-upload"></i></button>
+                <input type="file" id="input-file-config" accept=".json" />
+                <button type="button" id="generar-scorm" class="btn btn-primary" title="Generar Scorm" data-toggle="tooltip" data-placement="left" disabled><i class="fas fa-file-archive"></i></button>
+                <button type="button" class="btn btn-primary" title="Limpiar" data-toggle="tooltip" data-placement="right" id="limpiar"><i class="fas fa-eraser"></i></i></button>                
+                <button type="button" class="btn btn-primary title="Ir al principio" data-toggle="tooltip" data-placement="right" id="ir-principio"><i class="fas fa-level-up-alt"></i></button>
+            </div>
+        </form>
+    </div>
+</div>    
+
+<%- include('templates/modal') %>
+<%- include('templates/footer') %>

@@ -1,0 +1,59 @@
+/* SELECT */
+.content-select {
+      position: relative;
+  }
+  
+  .content-select .btn-select {
+      border: 1px solid var(--gris-1);
+      background-color: #ffffff;
+      display: block;
+  }
+  
+  .content-select .btn-select.active { 
+      border-color: var(--focus);
+  }
+  
+  .content-select .btn-select .element {
+      display: inline-flex;
+  }
+
+  .content-select .btn-select .element .texto {
+        margin-right: 1rem;
+  }
+  
+  .content-select .btn-select .icon {
+      margin-left: 0.5rem;
+  }
+  
+  .content-select .collapse {
+      position: absolute;
+      top: 4.4rem;
+      left: 0.4rem;        
+      box-shadow: var(--sombra-1);    
+  }
+  
+  .content-select .collapse .card {
+      padding: 0.5rem 0;    
+  }
+  
+  .content-select .collapse .card .element {   
+     display: inline-flex;
+     padding: 0.5rem 1rem;      
+  }
+  
+  .content-select .collapse .card .element:hover {
+      background-color:var(--gris-1);    
+      cursor: pointer;
+  }
+  
+  .content-select .collapse .card .element .texto {     
+      margin-right: 1rem;
+      min-width: 4rem;
+  }
+  
+  .content-select .btn-select .element .color,
+  .content-select .collapse .card .element .color {
+      width: 24px;
+      height: 24px;    
+      display: block;
+  }

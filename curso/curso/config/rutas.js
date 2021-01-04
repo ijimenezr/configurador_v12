@@ -1,0 +1,2 @@
+var cssIndi = [];
+var scriptIndi = [];

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+                  <manifest xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" identifier="MANIFEST-4D1321494E892B9EA3DE0FCFC30C4088" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+                  <metadata>
+                        <schema>ADL SCORM</schema>
+                        <schemaversion>1.2</schemaversion>
+                  </metadata>
+                        <organizations default="ORG-3e7dc6eb7592d6faf1836e5d39c38e7f">
+                              <organization identifier="ORG-3e7dc6eb7592d6faf1836e5d39c38e7f" structure="hierarchical">
+                                    <title>Unidad 1</title>
+                                    <item identifier="ITEM-aa16835218da51bd83f0fa65143cd569" isvisible="true" identifierref="RES-af22526f226384653546cb3b9ae62674">
+                                    <title>Apartado 1</title>
+                              </item><item identifier="ITEM-2117687f6c1a640af27fcb6d0adc631a" isvisible="true" identifierref="RES-667a0b90b4e220667b9a6ec7455eea69">
+                                    <title>Apartado 2</title>
+                              </item>
+                              </organization>
+                        </organizations>
+                        <resources>
+                              <resource identifier="RES-af22526f226384653546cb3b9ae62674" type="webcontent" href="ap01010101.html" adlcp:scormtype="sco">
+                                          <file href="ap01010101.html" />
+                                    </resource><resource identifier="RES-667a0b90b4e220667b9a6ec7455eea69" type="webcontent" href="ap01010201.html" adlcp:scormtype="sco">
+                                          <file href="ap01010201.html" />
+                                    </resource>                       
+                        </resources>
+                  </manifest>

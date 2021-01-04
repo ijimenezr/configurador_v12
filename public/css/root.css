@@ -1,0 +1,22 @@
+:root {
+
+    /* Colores principales */
+    --color-1: #128585;
+    --color-1-hover: #225A5A;    
+
+    /* Grises */
+    --gris-1: #E0E1E2;
+    --gris-2: #6c757d;
+
+    /* Transparencias */
+    --background-1: rgba(255,255,255, 0.8);
+    --background-2: rgba(255,255,255,0.72);
+    --background-3: #fcfcfc;
+
+    /* Sombras */
+    --sombra-1: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+
+    /* Otros */
+    --focus: #80bdff;
+
+}

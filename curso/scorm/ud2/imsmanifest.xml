@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+                  <manifest xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:imsmd="http://www.imsglobal.org/xsd/imsmd_rootv1p2p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" identifier="MANIFEST-4D1321494E892B9EA3DE0FCFC30C4088" xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+                  <metadata>
+                        <schema>ADL SCORM</schema>
+                        <schemaversion>1.2</schemaversion>
+                  </metadata>
+                        <organizations default="ORG-b6de13542de1735fdacce8dd9c149bce">
+                              <organization identifier="ORG-b6de13542de1735fdacce8dd9c149bce" structure="hierarchical">
+                                    <title>Unidad 2</title>
+                                    <item identifier="ITEM-101a925cc05c0451a06e796b233c70c2" isvisible="true" identifierref="RES-b5a5ece0461319b1b79a38d5d71dc952">
+                                    <title>Apartado 1</title>
+                              </item>
+                              </organization>
+                        </organizations>
+                        <resources>
+                              <resource identifier="RES-b5a5ece0461319b1b79a38d5d71dc952" type="webcontent" href="ap01020101.html" adlcp:scormtype="sco">
+                                          <file href="ap01020101.html" />
+                                    </resource>                       
+                        </resources>
+                  </manifest>
