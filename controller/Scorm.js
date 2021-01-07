@@ -38,6 +38,7 @@ function crearScorm(req, res) {
 
             // Actividades de evaluación final
             console.log(config.numTest);
+            console.log(Object.keys(unidades).length);
 
             for (let keyUnidad in unidades) {            
 

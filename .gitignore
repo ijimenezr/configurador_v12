@@ -1,2 +1,5 @@
 node_modules
 .env
+curso/curso/*
+curso/scorm/*
+curso/*.zip

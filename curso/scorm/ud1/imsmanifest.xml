@@ -4,17 +4,21 @@
                         <schema>ADL SCORM</schema>
                         <schemaversion>1.2</schemaversion>
                   </metadata>
-                        <organizations default="ORG-a1516bcf5bed29b2955983254142ffee">
-                              <organization identifier="ORG-a1516bcf5bed29b2955983254142ffee" structure="hierarchical">
+                        <organizations default="ORG-a6b7d6c5b332ab7658e2740493d263b4">
+                              <organization identifier="ORG-a6b7d6c5b332ab7658e2740493d263b4" structure="hierarchical">
                                     <title>Unidad 1</title>
-                                    <item identifier="ITEM-4db5dd8203ada5e29a3a9727c865181d" isvisible="true" identifierref="RES-bd2eb9027b127296388bfed54975c8e3">
+                                    <item identifier="ITEM-251c1fa8a1e95434a64dce0d4826443e" isvisible="true" identifierref="RES-33802f90b38a4e88dcbe4f464fb49d8c">
                                     <title>Apartado 1</title>
+                              </item><item identifier="ITEM-386a047ec873f56f496dc77245291ab3" isvisible="true" identifierref="RES-ea3d3873420b254eb882667fbb5367de">
+                                    <title>Apartado 2</title>
                               </item>
                               </organization>
                         </organizations>
                         <resources>
-                              <resource identifier="RES-bd2eb9027b127296388bfed54975c8e3" type="webcontent" href="ap01010101.html" adlcp:scormtype="sco">
+                              <resource identifier="RES-33802f90b38a4e88dcbe4f464fb49d8c" type="webcontent" href="ap01010101.html" adlcp:scormtype="sco">
                                           <file href="ap01010101.html" />
+                                    </resource><resource identifier="RES-ea3d3873420b254eb882667fbb5367de" type="webcontent" href="ap01010201.html" adlcp:scormtype="sco">
+                                          <file href="ap01010201.html" />
                                     </resource>                       
                         </resources>
                   </manifest>

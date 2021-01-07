@@ -4,16 +4,16 @@
                         <schema>ADL SCORM</schema>
                         <schemaversion>1.2</schemaversion>
                   </metadata>
-                        <organizations default="ORG-d27883cf48b96abdf177d872ec9fc8a0">
-                              <organization identifier="ORG-d27883cf48b96abdf177d872ec9fc8a0" structure="hierarchical">
+                        <organizations default="ORG-6665296a4332594ebb2656dc88f892fa">
+                              <organization identifier="ORG-6665296a4332594ebb2656dc88f892fa" structure="hierarchical">
                                     <title>Glosario</title>
-                                    <item identifier="ITEM-30a61bf19896afcacf243539d95a6e56" isvisible="true" identifierref="RES-c2b52a02fd3e4d9709e97a3236435fd4">
+                                    <item identifier="ITEM-85f1d937567c86d20e82870a6620da31" isvisible="true" identifierref="RES-c93e2bbeee665ab913c55548dc9d887e">
                                     <title>Glosario</title>
                               </item>
                               </organization>
                         </organizations>
                         <resources>
-                              <resource identifier="RES-c2b52a02fd3e4d9709e97a3236435fd4" type="webcontent" href="glosario.html" adlcp:scormtype="sco">
+                              <resource identifier="RES-c93e2bbeee665ab913c55548dc9d887e" type="webcontent" href="glosario.html" adlcp:scormtype="sco">
                                           <file href="glosario.html" />
                                     </resource>                       
                         </resources>

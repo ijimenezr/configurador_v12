@@ -4,16 +4,16 @@
                         <schema>ADL SCORM</schema>
                         <schemaversion>1.2</schemaversion>
                   </metadata>
-                        <organizations default="ORG-75b32bb139905b568e99759ea98c8cb4">
-                              <organization identifier="ORG-75b32bb139905b568e99759ea98c8cb4" structure="hierarchical">
+                        <organizations default="ORG-1443fe4ae957d2e8178d6eda61c76c5b">
+                              <organization identifier="ORG-1443fe4ae957d2e8178d6eda61c76c5b" structure="hierarchical">
                                     <title>Bibliografía</title>
-                                    <item identifier="ITEM-a2c05a96943cc904ca2345edfc88d6c9" isvisible="true" identifierref="RES-92ec286f627b98a7a78bc6a299b97df8">
+                                    <item identifier="ITEM-fe1096cd135688a1d586d820ca3f8d62" isvisible="true" identifierref="RES-399cbd0b34631a29aafab765328e3e7d">
                                     <title>Bibliografía</title>
                               </item>
                               </organization>
                         </organizations>
                         <resources>
-                              <resource identifier="RES-92ec286f627b98a7a78bc6a299b97df8" type="webcontent" href="bibliografia.html" adlcp:scormtype="sco">
+                              <resource identifier="RES-399cbd0b34631a29aafab765328e3e7d" type="webcontent" href="bibliografia.html" adlcp:scormtype="sco">
                                           <file href="bibliografia.html" />
                                     </resource>                       
                         </resources>
