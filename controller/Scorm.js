@@ -5,6 +5,8 @@ const variables = require('../config/variables')
 
 function crearScorm(req, res) {
       
+      let totalUnid, cont;
+
       try {
             var config = JSON.stringify(req.body);
             config = JSON.parse(config);
@@ -21,9 +23,9 @@ function crearScorm(req, res) {
             let unidades = config.unidades;
 
             // Actividades de evaluación final
-            let totalUnid = Object.keys(unidades).length;
+            totalUnid = Object.keys(unidades).length;
             let total = totalUnid + parseInt(config.numTest);
-            let cont = 0, ejercicios;
+            cont = 0
 
             for (let i = totalUnid+1; i <= total; i++) {                                   
                   cont++;            
@@ -33,8 +35,6 @@ function crearScorm(req, res) {
                   unidades[i].apartados = {};
                   unidades[i].apartados[`ap01${numUnid}0101`] = `Evaluación ${cont}`;
             }
-            
-            console.log(unidades);
             
             // Bibliografía
             unidades.bibliografia = {
@@ -51,13 +51,16 @@ function crearScorm(req, res) {
                         glosario: "Glosario"
                   }
             }
-
             
-
+            cont = 0;
             for (let keyUnidad in unidades) {            
 
+                  cont++;
+                  let nomType;
+                  (cont > totalUnid) ? nomType = `ev${cont}` : nomType = `ud${keyUnidad}`;    
+
                   let items = "", resources = "";                  
-                  let nomFile = (keyUnidad.toLowerCase().includes("biblio") || keyUnidad.toLowerCase().includes("glosario")) ? keyUnidad : `ud${keyUnidad}`
+                  let nomFile = (keyUnidad.toLowerCase().includes("biblio") || keyUnidad.toLowerCase().includes("glosario")) ? keyUnidad : nomType
                   let destino = variables.destinoScorm + nomFile;                                               
 
                   // Crear carpeta por unidad 
@@ -147,11 +150,16 @@ function crearScorm(req, res) {
                   
                   const Zipit = require('zipit'); 
                   let promesasZip = [];
+                  cont = 0;
 
                   // CREAR EL ZIP POR UNIDAD                  
                   for(let keyUnidad in unidades) {                        
 
-                        let nomFile = (keyUnidad.toLowerCase().includes("biblio") || keyUnidad.toLowerCase().includes("glosario")) ? keyUnidad : `ud${keyUnidad}`
+                        cont++;
+                        let nomType;
+                        (cont > totalUnid) ? nomType = `ev${cont}` : nomType = `ud${keyUnidad}`;    
+
+                        let nomFile = (keyUnidad.toLowerCase().includes("biblio") || keyUnidad.toLowerCase().includes("glosario")) ? keyUnidad : nomType
                         let origen = variables.dirScorm + nomFile;  
                         let files = [];
 
@@ -177,5 +185,6 @@ function crearScorm(req, res) {
       .catch((error) => res.status(404).send(error))
 
 }
+
 
 module.exports = { crearScorm };

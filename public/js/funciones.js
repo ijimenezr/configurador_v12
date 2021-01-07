@@ -1,4 +1,3 @@
-import { isNavegador, isDispositivo } from "./detector.mjs";
 import { select, selectReiniciar } from "./componentes.mjs";
 
 var config = {}; 
@@ -243,6 +242,12 @@ $('#generar-scorm').on('click', () => {
         if(config.glosario)
           modal.find('.modal-content').find('.modal-body').find('ul').append(`<li><a href="/descargarScorm/glosario" class="btn btn-link"><i class="fas fa-file-archive"></i> Descargar paquete SCORM del glosario</a></li>`);
 
+        // Ejercicios de evaluación final        
+        for(let i = 1; i<= config.numTest; i++) {
+          let numEv = i + Object.keys(config.unidades).length;          
+          modal.find('.modal-content').find('.modal-body').find('ul').append(`<li><a href="/descargarScorm/ev${numEv}" class="btn btn-link"><i class="fas fa-file-archive"></i> Descargar paquete SCORM de la evaluación final ${i}</a></li>`);
+        }  
+
         modal.modal('show');
 
         console.log(`El paquete scorm del curso "${respuesta.titulo}" ha sido generado con éxito.`);        
@@ -326,6 +331,7 @@ $('#input-file-config').on('change', function(e) {
     // Glosario
     (config.glosario) ? $('#check-glosario').prop('checked', true) : $('#check-glosario').prop('checked',false);
 
+  
     // Habilitar el botón generar
     $('#generar-scorm').removeAttr('disabled');
 
