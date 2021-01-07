@@ -106,9 +106,9 @@ label {
 }
 
 #configuracion-curso #unidades .unidad .content {
-    border: 1px solid var(--gris-1);
+    border: 1px solid var(--color-1);
     padding: 2rem;    
-    background-color: var(--background-2);
+    background-color: #ffffff;
     border-radius: 3px;    
 }
 
