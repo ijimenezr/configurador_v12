@@ -9,21 +9,22 @@ let select = () => {
       $('.btn-select').on('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
-
-            $(this).addClass('active');
-            let content = $(this).attr('href');            
-
-            contentSelect.find('.collapse').removeClass('show');
+                              
             contentSelect.find('.btn-select').find('.icon').addClass('fa-angle-down').removeClass('fa-angle-up');
-
-            if (!$(content).hasClass('show')) {
-                  $(content).addClass('show');
+            
+            if (!contentSelect.find('.collapse').hasClass('show')) {
+                  contentSelect.find('.collapse').addClass('show');
                   $(this).find('.icon').addClass('fa-angle-up').removeClass('fa-angle-down');
+                  $(this).addClass('active');
+            } else {                  
+                  contentSelect.find('.collapse').removeClass('show');
+                  $(this).find('.icon').removeClass('fa-angle-up').addClass('fa-angle-down');
+                  $(this).removeClass('active');
             }
       });
 
       // Click en elementos del despegable
-      contentSelect.find('.collapse').find('.element').on('click', function () {
+      contentSelect.find('.collapse').find('.element').on('click', function () {            
             let contentHtml = $(this).html(),
                 valor = $(this).find('.texto').attr('data-value');
             $(this).parents('.content-select').find('.btn-select').find('.element').html(contentHtml);

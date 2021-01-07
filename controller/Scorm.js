@@ -19,6 +19,22 @@ function crearScorm(req, res) {
             
             let promesas = [];      
             let unidades = config.unidades;
+
+            // Actividades de evaluación final
+            let totalUnid = Object.keys(unidades).length;
+            let total = totalUnid + parseInt(config.numTest);
+            let cont = 0, ejercicios;
+
+            for (let i = totalUnid+1; i <= total; i++) {                                   
+                  cont++;            
+                  let numUnid = (i > 9) ? i : `0${i}`;                                    
+                  unidades[i] = {};
+                  unidades[i].titulo = `Evaluación ${cont}`;
+                  unidades[i].apartados = {};
+                  unidades[i].apartados[`ap01${numUnid}0101`] = `Evaluación ${cont}`;
+            }
+            
+            console.log(unidades);
             
             // Bibliografía
             unidades.bibliografia = {
@@ -36,9 +52,7 @@ function crearScorm(req, res) {
                   }
             }
 
-            // Actividades de evaluación final
-            console.log(config.numTest);
-            console.log(Object.keys(unidades).length);
+            
 
             for (let keyUnidad in unidades) {            
 
