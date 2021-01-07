@@ -25,7 +25,7 @@ router.get('/descargarConfig', (req, res) => {
 
 // DESCARGAR LOS PAQUETES SCORMS
 router.get('/descargarScorm/:ud', (req, res) => {
-      let url = `${__dirname}/curso/scorm/ud${req.params.ud}.zip`;
+      let url = `${__dirname}/curso/scorm/${req.params.ud}.zip`;
       res.download(url);
 });
 

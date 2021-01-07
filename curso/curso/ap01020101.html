@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Glosario</title>
+    <title></title>
     <script src="js/load.js"></script>
+
 </head>
 
-<body>
+<body style="overflow: hidden;">
 
     <div id="precarga"
         style=" position: fixed; top: 0; left: 0; background-color: #000000; width: 100%; height: 100%; z-index: 4; color: #ffffff; overflow: hidden;">
@@ -24,14 +25,26 @@
         </div>
     </div>
 
-    <div id="glosario">
-        <!--PALABRA -->
-        <div class="palabra">
-            <p class="titulo">Palabra</p>
-            <div class="definicion">
-                <p>Definición</p>
+    <div id="wrapper">
+        <div id="progreso"></div>
+        
+        
+        <header>
+            <div class="fondo">
+                <img src="" alt="" class="img-cover">
+                <div class="backdrop"></div>
+                <div class="info-header info-header-unidad">
+                    <div class="num-unidad">01</div>
+                    <h1 class="titulo-unidad">Título unidad</h1>
+                </div>
+                <div class="info-header info-header-apartado">
+                    <div class="num-apartado">1</div>
+                    <h2 class="titulo-apartado">Título apartado</h2>
+                </div>
             </div>
-        </div>
+            <div class="content-text"></div>
+        </header>
+        
     </div>
 </body>
 

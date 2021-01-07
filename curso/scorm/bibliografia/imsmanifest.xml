@@ -4,17 +4,17 @@
                         <schema>ADL SCORM</schema>
                         <schemaversion>1.2</schemaversion>
                   </metadata>
-                        <organizations default="ORG-a1516bcf5bed29b2955983254142ffee">
-                              <organization identifier="ORG-a1516bcf5bed29b2955983254142ffee" structure="hierarchical">
-                                    <title>Unidad 1</title>
-                                    <item identifier="ITEM-4db5dd8203ada5e29a3a9727c865181d" isvisible="true" identifierref="RES-bd2eb9027b127296388bfed54975c8e3">
-                                    <title>Apartado 1</title>
+                        <organizations default="ORG-75b32bb139905b568e99759ea98c8cb4">
+                              <organization identifier="ORG-75b32bb139905b568e99759ea98c8cb4" structure="hierarchical">
+                                    <title>Bibliografía</title>
+                                    <item identifier="ITEM-a2c05a96943cc904ca2345edfc88d6c9" isvisible="true" identifierref="RES-92ec286f627b98a7a78bc6a299b97df8">
+                                    <title>Bibliografía</title>
                               </item>
                               </organization>
                         </organizations>
                         <resources>
-                              <resource identifier="RES-bd2eb9027b127296388bfed54975c8e3" type="webcontent" href="ap01010101.html" adlcp:scormtype="sco">
-                                          <file href="ap01010101.html" />
+                              <resource identifier="RES-92ec286f627b98a7a78bc6a299b97df8" type="webcontent" href="bibliografia.html" adlcp:scormtype="sco">
+                                          <file href="bibliografia.html" />
                                     </resource>                       
                         </resources>
                   </manifest>

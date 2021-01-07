@@ -1,26 +1,27 @@
 const fs = require('fs');
 const fse = require('fs-extra');
 const util = require('util') ;
+const { destinationCourse } = require('../config/variables');
+const variables = require('../config/variables');
 const { setEjercicios } = require("./Utilidades");
 let titulo;
 
 function crearCurso(req, res) {
 
       // Eliminar todos los zip existentes en el directorio de cursos
-      const testFolder = 'curso/';
-
-      fs.readdirSync(testFolder).forEach(file => {
+      fs.readdirSync(variables.dirCourse).forEach(file => {
             if (file.includes('zip'))
-                  fs.unlinkSync(`curso/${file}`);
+                  fs.unlinkSync(variables.dirCourse + file);
       });
 
       let datos = req.body;
           config = {}, 
           unidad = 0;
+          config.version = "12";   
 
       for(let key in datos) {           
 
-            if (key.toLocaleLowerCase().includes("apartado")) {
+            if (key.toLowerCase().includes("apartado")) {
                   
                   let apartado = key.replace(`unidad-${unidad}-apartado-`,"");                                    
                   
@@ -31,7 +32,7 @@ function crearCurso(req, res) {
                         config.unidades[unidad].apartados[nomApartado] = datos[key];                 
                   
 
-            } else if (key.toLocaleLowerCase().includes("unidad")) {
+            } else if (key.toLowerCase().includes("unidad")) {
 
                   unidad = key.replace("unidad-","");                  
 
@@ -47,44 +48,51 @@ function crearCurso(req, res) {
                         
                   delete datos[`ejercicios-${unidad}`];      
 
+                  } else if (key.toLowerCase().includes("biblio")) {
+
+                  // Biblio
+                  datos['check-biblio'] ? config.biblio = true : config.biblio = false
+
+            } else if (key.toLowerCase().includes("glosario")) {
+
+                  // Glosario
+                  (datos['check-glosario']) ? config.glosario = true : config.glosario = false
+
             } else 
                   config[key] = datos[key];
+                                              
+      }     
 
-
-            // Título - Se reemplaza los espacios por guines bajos, se eliminan las tildes y se convierte todo a minúscula
-            titulo = config.tituloCurso.replace(/\s/g, "_").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase();      
-                               
-      }
+      // Título - Se reemplaza los espacios por guines bajos, se eliminan las tildes y se convierte todo a minúscula
+      titulo = config.tituloCurso.replace(/\s/g, "_").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();  
 
       // Eliminar la carpeta para volver a crear un curso
-      fse.emptyDir('curso/curso')
+      fse.emptyDir(variables.destinationCourse)
       .then(() => {           
-            console.log(process.env.NODE_ENV);
-            // Crear los ficheros necesarios del curso
-            let source = "curso/fuentes/UF0000/";
-            let destination = "curso/curso/";            
-
-            if (process.env.NODE_ENV !== "dev") {                  
-                  let folder = ['animaciones', 'audios', 'css', 'descargas','documentos', 'imagenes/contenidos', 'imagenes/portadas','videos']            
-                  folder.forEach(element => fse.ensureDirSync(`${source}/${element}`));
-            }            
             
-            return fse.copy(source, destination);                             
+            // Crear los ficheros necesarios del curso                        
+            let promesasCopia = [];
+
+            // Crear carpetas que no llevan contenido 
+            let folderCreate = ['animaciones', 'audios', 'css', 'descargas','documentos', 'imagenes/contenidos', 'imagenes/portadas','videos', 'js', 'config']                        
+            folderCreate.forEach(element => promesasCopia.push(fse.ensureDir(variables.destinationCourse + element)));            
+            
+            // Copiar las carpetas que tienen contenido
+            let folderCopy = ['config', 'js']
+            folderCopy.forEach(element => promesasCopia.push(fse.copy(variables.originCourse + element, variables.destinationCourse + element)))
+
+            return Promise.all(promesasCopia) 
 
       })      
       .then(() => {                                                   
 
-            // Eliminar ficheros no necesarios
-            fse.removeSync('curso/curso/apartado.html');
-            fse.removeSync('curso/curso/evaluacion.html');
-
             // Crear el fichero de configuración
-            return fse.writeJson('curso/curso/config/config.json', config)
+            return fse.writeJson(variables.fileConfigCourse, config)
       })
       .then(result => {           
 
-           // Crear los apartados, ejercicios de autoevaluación y las evaluaciones finales
-           let source = "curso/fuentes/UF0000/apartado.html";
+           // Crear los apartados, ejercicios de autoevaluación, las evaluaciones finales, bibliografía y glosario
+           let source = `${variables.originCourse}apartado.html`;
            let unidades = config.unidades;
            let promesas = [];
            const writeFile = util.promisify(fs.writeFile);
@@ -93,50 +101,53 @@ function crearCurso(req, res) {
             for(let keyUnidad in unidades) {           
                   let apartados = unidades[keyUnidad].apartados;                  
                   for(let keyApartado in apartados) {
-                        let destination = `curso/curso/${keyApartado}.html`;                   
+                        let destination = `${variables.destinationCourse}${keyApartado}.html`;                   
                         promesas.push(fse.copy(source, destination));
 
                   }
                   // Ejercicios de autoevaluación                        
                   if (unidades[keyUnidad].ejercicios) {                              
                         let num = Object.keys(apartados).length + 1;
-                        let nomApartado = nombreApartado(keyUnidad, num);
-                        // let source = "curso/fuentes/UF0000/evaluacion.html";
-                        let destination = `curso/curso/${nomApartado}.html`;                   
+                        let nomApartado = nombreApartado(keyUnidad, num);                        
+                        let destination = `${variables.destinationCourse}${nomApartado}.html`;                   
                         let ejercicios = setEjercicios(); 
-                        promesas.push(writeFile(destination, ejercicios));    
-                        // promesas.push(fse.copy(source, destination));                       
+                        promesas.push(writeFile(destination, ejercicios));                                                   
                   }
             }
             
             // Ejercicios de evaluación final                        
-            let num = config.numTest;            
-            // let source = "curso/fuentes/UF0000/test.html";
+            let num = config.numTest;                        
             for(let i = 1; i<=num; i++) {                  
                   let totalUnidades = Object.keys(unidades).length + i;
                   let numEv = (totalUnidades < 9) ? '0' + totalUnidades : numEv;                  
                   let nomEvaluacion = `ap01${numEv}0101`;
-                  let destination = `curso/curso/${nomEvaluacion}.html`;
+                  let destination = `${destinationCourse}${nomEvaluacion}.html`;
                   let ejercicios = setEjercicios("global", i);
-                  promesas.push(writeFile(destination, ejercicios));    
-                  // promesas.push(fse.copy(source, destination));
+                  promesas.push(writeFile(destination, ejercicios));                      
             }
 
+            // Bibliografía            
+            if (config.biblio)                  
+                  promesas.push(fse.copy(`${variables.originCourse}bibliografia.html`, `${variables.destinationCourse}bibliografia.html`));                  
+
+            // Glosario      
+            if (config.glosario)      
+                  promesas.push(fse.copy(`${variables.originCourse}glosario.html`, `${variables.destinationCourse}glosario.html`));                 
                   
             return Promise.all(promesas)
 
       })      
       .then(() => {
             
-           // Crear el zip 
+           // Crear el zip de las unidades
            const Zipit = require('zipit'); 
             Zipit({
-                  input: ['curso/curso'],
+                  input: [variables.destinationCourse],
                   cwd: process.cwd()
             }, (err, buffer) => {
                   if (!err) 
                         return new Promise((resolve, rejects) => {
-                              fs.writeFile(`curso/${titulo}.zip`, buffer, (err, data) => {
+                              fs.writeFile(`${variables.dirCourse}${titulo}.zip`, buffer, (err, data) => {
                                     if (err) rejects(err);
                                     resolve();
                               })

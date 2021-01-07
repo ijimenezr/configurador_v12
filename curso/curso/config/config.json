@@ -1,1 +1,1 @@
-{"tituloCurso":"curso de prueba","numTest":"","tema":"colores-default","unidades":{"1":{"titulo":"Unidad 1","ejercicios":true,"apartados":{"ap01010101":"Apartado 1"}}}}
+{"version":"12","tituloCurso":"curso de prueba","numTest":"1","biblio":true,"tema":"colores-default","unidades":{"1":{"titulo":"Unidad 1","ejercicios":true,"apartados":{"ap01010101":"Apartado 1","ap01010201":"Apartado 2"}},"2":{"titulo":"Unidad 2","ejercicios":true,"apartados":{"ap01020101":"Apartado 1"}}}}

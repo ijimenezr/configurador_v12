@@ -4,17 +4,17 @@
                         <schema>ADL SCORM</schema>
                         <schemaversion>1.2</schemaversion>
                   </metadata>
-                        <organizations default="ORG-b6de13542de1735fdacce8dd9c149bce">
-                              <organization identifier="ORG-b6de13542de1735fdacce8dd9c149bce" structure="hierarchical">
-                                    <title>Unidad 2</title>
-                                    <item identifier="ITEM-101a925cc05c0451a06e796b233c70c2" isvisible="true" identifierref="RES-b5a5ece0461319b1b79a38d5d71dc952">
-                                    <title>Apartado 1</title>
+                        <organizations default="ORG-d27883cf48b96abdf177d872ec9fc8a0">
+                              <organization identifier="ORG-d27883cf48b96abdf177d872ec9fc8a0" structure="hierarchical">
+                                    <title>Glosario</title>
+                                    <item identifier="ITEM-30a61bf19896afcacf243539d95a6e56" isvisible="true" identifierref="RES-c2b52a02fd3e4d9709e97a3236435fd4">
+                                    <title>Glosario</title>
                               </item>
                               </organization>
                         </organizations>
                         <resources>
-                              <resource identifier="RES-b5a5ece0461319b1b79a38d5d71dc952" type="webcontent" href="ap01020101.html" adlcp:scormtype="sco">
-                                          <file href="ap01020101.html" />
+                              <resource identifier="RES-c2b52a02fd3e4d9709e97a3236435fd4" type="webcontent" href="glosario.html" adlcp:scormtype="sco">
+                                          <file href="glosario.html" />
                                     </resource>                       
                         </resources>
                   </manifest>

@@ -233,7 +233,16 @@ $('#generar-scorm').on('click', () => {
         let modal = $('#modal-descargar-scorm');        
         modal.find('.modal-content').find('.modal-body').find('ul').empty();
         for(let i = 1; i<= Object.keys(config.unidades).length; i++) 
-          modal.find('.modal-content').find('.modal-body').find('ul').append(`<li><a href="/descargarScorm/${i}" class="btn btn-link"><i class="fas fa-file-archive"></i> Descargar paquete SCORM de la unidad ${i}</a></li>`);
+          modal.find('.modal-content').find('.modal-body').find('ul').append(`<li><a href="/descargarScorm/ud${i}" class="btn btn-link"><i class="fas fa-file-archive"></i> Descargar paquete SCORM de la unidad ${i}</a></li>`);
+
+        // Bibliografía
+        if(config.biblio)
+          modal.find('.modal-content').find('.modal-body').find('ul').append(`<li><a href="/descargarScorm/bibliografia" class="btn btn-link"><i class="fas fa-file-archive"></i> Descargar paquete SCORM de la bibliografía</a></li>`);
+
+        // Glosario
+        if(config.glosario)
+          modal.find('.modal-content').find('.modal-body').find('ul').append(`<li><a href="/descargarScorm/glosario" class="btn btn-link"><i class="fas fa-file-archive"></i> Descargar paquete SCORM del glosario</a></li>`);
+
         modal.modal('show');
 
         console.log(`El paquete scorm del curso "${respuesta.titulo}" ha sido generado con éxito.`);        
@@ -310,6 +319,12 @@ $('#input-file-config').on('change', function(e) {
         $(`#unidad-${keyUnidad}-apartado-${index}`).val(apartados[keyApartado]);               
       }      
     }
+
+    // Bibliografía
+    (config.biblio) ? $('#check-biblio').prop('checked', true) : $('#check-biblio').prop('checked', false);
+
+    // Glosario
+    (config.glosario) ? $('#check-glosario').prop('checked', true) : $('#check-glosario').prop('checked',false);
 
     // Habilitar el botón generar
     $('#generar-scorm').removeAttr('disabled');

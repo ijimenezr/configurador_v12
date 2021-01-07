@@ -1,6 +1,7 @@
 const fs = require('fs');
 const fse = require('fs-extra');
 const md5 = require('md5');
+const variables = require('../config/variables')
 
 function crearScorm(req, res) {
       
@@ -13,24 +14,42 @@ function crearScorm(req, res) {
       }    
 
       // Limpiar la carpeta de los scorm
-      fse.emptyDir('curso/scorm')
+      fse.emptyDir(variables.dirScorm)
       .then(() => {
             
             let promesas = [];      
             let unidades = config.unidades;
+            
+            // Bibliografía
+            unidades.bibliografia = {
+                  titulo: "Bibliografía",
+                  apartados: {
+                        bibliografia: "Bibliografía"
+                  }
+            }
+
+            // Glosario
+            unidades.glosario = {
+                  titulo: "Glosario",
+                  apartados: {
+                        glosario: "Glosario"
+                  }
+            }
+
+            // Actividades de evaluación final
+            console.log(config.numTest);
+
             for (let keyUnidad in unidades) {            
 
-
-                  let items = "", resources = "";
-
-                  let destino = `curso/scorm/ud${keyUnidad}`;                             
+                  let items = "", resources = "";                  
+                  let nomFile = (keyUnidad.toLowerCase().includes("biblio") || keyUnidad.toLowerCase().includes("glosario")) ? keyUnidad : `ud${keyUnidad}`
+                  let destino = variables.destinoScorm + nomFile;                                               
 
                   // Crear carpeta por unidad 
                   fse.ensureDirSync(destino);
 
-                  // Copiar los ficheros necesarios a la carpeta
-                  let origen = "curso/fuentes/empaquetar/";                                    
-                  fse.copySync(origen, destino);
+                  // Copiar los ficheros necesarios a la carpeta                  
+                  fse.copySync(variables.originScorm, destino);
                   
                   let apartados = unidades[keyUnidad].apartados;
                   for (let keyApartado in apartados) {              
@@ -104,7 +123,6 @@ function crearScorm(req, res) {
                         </resources>
                   </manifest>`;
 
-
                   promesas.push(fse.writeFile(`${destino}/imsmanifest.xml`, fragmentoManifest));
 
             }
@@ -112,24 +130,26 @@ function crearScorm(req, res) {
             return Promise.all(promesas)
             .then(() => {            
                   
-                  // CREAR EL ZIP POR UNIDAD
+                  const Zipit = require('zipit'); 
                   let promesasZip = [];
-                  for(let keyUnidad in unidades) {
-                        
-                        let origen = `curso/scorm/ud${keyUnidad}`;  
+
+                  // CREAR EL ZIP POR UNIDAD                  
+                  for(let keyUnidad in unidades) {                        
+
+                        let nomFile = (keyUnidad.toLowerCase().includes("biblio") || keyUnidad.toLowerCase().includes("glosario")) ? keyUnidad : `ud${keyUnidad}`
+                        let origen = variables.dirScorm + nomFile;  
                         let files = [];
 
                         // Leer los ficheros de un directorio
-                        fs.readdirSync(origen).forEach(file => files.push(`${origen}/${file}`));                  
+                        fs.readdirSync(origen).forEach(file => files.push(`${origen}/${file}`));                                          
                                           
-                        // Crear el zip utilizando el array de ficheros que debe contener el zip
-                        const Zipit = require('zipit'); 
+                        // Crear el zip utilizando el array de ficheros que debe contener el zip                        
                         Zipit({
                               input: files,
                               cwd: process.cwd()
                         }, (err, buffer) => {
                               if (!err) 
-                                    promesasZip.push(fse.writeFile(`curso/scorm/ud${keyUnidad}.zip`, buffer));
+                                    promesasZip.push(fse.writeFile(`${variables.dirScorm}${nomFile}.zip`, buffer));
                         });
                   }
 
