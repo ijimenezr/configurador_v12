@@ -1,5 +1,7 @@
 :root {
 
+    /* DARK LIGNT */
+
     /* Colores principales */
     --color-primario: #128585;
     --color-primario-hover: #225A5A;    
@@ -11,7 +13,7 @@
     /* Transparencias */
     --background-1: rgba(255,255,255, 0.8);
     --background-2: rgba(255,255,255,0.72);
-    --background-3: #f8f8f8;
+    --background-3: #ebebeb;
 
     /* Sombras */
     --sombra-1: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
@@ -19,5 +21,18 @@
     /* Otros */
     --focus: #80bdff;
 
+    /* TEMA DARK */
+
+    /* Colores principales */
+    --color-primario-dark: hsla(180, 100%, 44%, 1); 
+    --color-segundario-dark: hsla(180, 100%, 64%, 1);
+    --color-text-dark: hsla(0, 0%, 92%, 1);
+    --color-text-secundario-dark: hsla(180, 100%, 17%, 1); 
+
+    /* Fondos */
+    --color-fondo-dark-1: hsla(0, 0%, 15%, 1);
+    --color-fondo-dark-2: hsla(0, 0%, 20%, 1);
+    --color-fondo-dark-3: hsla(0, 0%, 25%, 1);
+    
 }
 
