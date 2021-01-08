@@ -1,9 +1,15 @@
 import { select, selectReiniciar } from "./componentes.mjs";
+import { setScheme } from "./colorScheme.mjs";
 
 var config = {}; 
 
+// Aplicar el esquema de color según el modo elegido o el modo del SO
+setScheme();
+
 // Tooltip
-$('[data-toggle="tooltip"]').tooltip();
+const tooltip = $('[data-toggle="tooltip"]');
+// tooltip.on('click', () => tooltip.tooltip('hide'));
+tooltip.tooltip();
 
 // Iniciar select
 select();
@@ -31,14 +37,14 @@ let actualizarNumUnidades = (num) =>  configuracionCurso.find('.menu').find('.bt
 let configuracionCurso = $('#configuracion-curso');
 
 // Comportamiento del menu anclas
-configuracionCurso.find('.menu').find('.btn').on('click', (e) => {  
-    
+configuracionCurso.find('.menu').find('.btn').on('click', (e) => {      
+
   let ancla = e.target.attributes.href.value;  
   let pos = $(ancla).offset().top;    
   $('html,body').animate({scrollTop: pos - 60}, 1000);
 
   configuracionCurso.find('.menu').find('.btn').removeClass('active');
-  $(e.target).addClass('active');
+  $(e.target).addClass('active'); 
 
 });
 
@@ -153,6 +159,8 @@ $('#ir-a-unidad').on("keyup", function(e) {
   }  
 
 });
+
+$('.content-bottom').find('.btn').on('mousedown', (e) => e.preventDefault());
 
 let formulario = $('#form-configuracion');
 

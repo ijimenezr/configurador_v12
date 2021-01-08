@@ -1,7 +1,7 @@
 @import 'root.css';
 @import 'componentes.css';
 
-html, body {
+body {
     font-family: 'Nunito', sans-serif;
     font-size: 1rem;   
     width: 100%;
