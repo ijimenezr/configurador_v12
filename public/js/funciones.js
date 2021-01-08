@@ -7,9 +7,7 @@ var config = {};
 setScheme();
 
 // Tooltip
-const tooltip = $('[data-toggle="tooltip"]');
-// tooltip.on('click', () => tooltip.tooltip('hide'));
-tooltip.tooltip();
+$('[data-toggle="tooltip"]').tooltip();
 
 // Iniciar select
 select();
@@ -32,7 +30,6 @@ window.addEventListener('load', function() {
 
 
 /* CONFIGURACIÓN CURSO */
-
 let actualizarNumUnidades = (num) =>  configuracionCurso.find('.menu').find('.btn[href="#unidades"]').find('.badge').text(parseInt(num));
 let configuracionCurso = $('#configuracion-curso');
 

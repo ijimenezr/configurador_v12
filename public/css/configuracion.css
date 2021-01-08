@@ -3,11 +3,7 @@
 h1, h2 {
     font-weight: bold;    
     margin-bottom: 2rem;    
-    color: var(--color-1);
-}
-
-.custom-checkbox .custom-control-input:checked~.custom-control-label::before{
-    background-color: var(--color-1);
+    color: var(--color-primario);
 }
 
 ::placeholder,
@@ -52,14 +48,14 @@ label {
 }
 
 #configuracion-curso .menu .btn.active {
-    background-color: var(--color-1);
-    border-color: var(--color-1);    
+    background-color: var(--color-primario);
+    border-color: var(--color-primario);    
     box-shadow: none;    
 }
 
 #configuracion-curso .menu .buscar {
     display: inline-block;
-    color: var(--color-1);    
+    color: var(--color-primario);    
     margin: 0;
     margin-left: 0.5rem;
     float: right;
@@ -82,12 +78,6 @@ label {
     text-align: center;
 }
 
-#configuracion-curso .custom-checkbox,
-#configuracion-curso .content-select {
-    display: inline-block;
-    margin-right: 1rem;
-}
-
 #configuracion-curso #unidades {
     margin-top: 3rem;
     padding-bottom: 3rem;
@@ -106,7 +96,7 @@ label {
 }
 
 #configuracion-curso #unidades .unidad .content {
-    border: 1px solid var(--color-1);
+    border: 1px solid var(--color-primario);
     padding: 2rem;    
     background-color: #ffffff;
     border-radius: 3px;    
@@ -132,7 +122,7 @@ label {
 
 #configuracion-curso #unidades .eliminar-unidad,
 #configuracion-curso #unidades .eliminar-apartado {
-    color: var(--color-1);
+    color: var(--color-primario);
 }
 
 #configuracion-curso .content-bottom {
@@ -150,7 +140,7 @@ label {
     height: 3rem;
     font-size: 1.4rem;
     line-height: 0;    
-    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5)!important;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
 #configuracion-curso .content-bottom input[type=file] {

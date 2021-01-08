@@ -1,8 +1,8 @@
 :root {
 
     /* Colores principales */
-    --color-1: #128585;
-    --color-1-hover: #225A5A;    
+    --color-primario: #128585;
+    --color-primario-hover: #225A5A;    
 
     /* Grises */
     --gris-1: #E0E1E2;
@@ -21,17 +21,3 @@
 
 }
 
-/*
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #121212;
-    }
-}
-
-
-@media (prefers-color-scheme: light) {
-    body {
-        background-color: var(--background-3);
-    }
-}
-*/

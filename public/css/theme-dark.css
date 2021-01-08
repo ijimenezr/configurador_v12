@@ -1,4 +1,98 @@
-
-body[dark=true] {
-      background-color: #121212;      
+body[dark=true] {      
+      background-color: hsla(0, 0%, 15%, 1);
+      color: hsla(0, 0%, 92%, 1)fff;     
+      /*transition: background-color 500ms;*/
 }
+
+body[dark=true] h1, body[dark=true] h2, body[dark=true] h3, body[dark=true] h4, body[dark=true] h5, body[dark=true] h6 {      
+      font-weight: normal;
+      color:hsla(180, 100%, 44%, 1);
+      /*transition: color 500ms;*/
+}
+
+body[dark=true] label {
+      font-weight: normal;
+      color: hsla(0, 0%, 92%, 1);  
+      /*transition: color 500ms;*/    
+}
+
+body[dark=true] input,
+body[dark=true] input:focus {
+      background-color: hsla(0, 0%, 25%, 1);
+      border-color: hsla(0, 0%, 18%, 1);
+      box-shadow:0px 0px 10px 0px hsla(0, 0%, 18%, 1);
+      color: hsla(0, 0%, 92%, 1);  
+      /*transition: color 500ms ease-out, background-color 500s ease-out;            */
+}
+
+body[dark=true] .btn-link {
+      color: hsla(180, 100%, 44%, 1);  
+}
+
+body[dark=true] .btn-link:hover {
+      color: hsla(180, 100%, 64%, 1);
+}
+
+body[dark=true] .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+      background-color: hsla(180, 100%, 34%, 1);
+}
+
+body[dark=true] #configuracion-curso #unidades .unidad .content {
+      background-color: hsla(0, 0%, 20%, 1);  
+      border: none; 
+      box-shadow:0px 0px 10px 0px hsla(0, 0%, 18%, 1);   
+}
+
+body[dark=true] #configuracion-curso #unidades .numUnidad {
+      color: hsla(0, 0%, 92%, 1);
+}
+
+body[dark=true] #configuracion-curso #unidades .eliminar-unidad, 
+body[dark=true] #configuracion-curso #unidades .eliminar-apartado {
+      color: hsla(180, 100%, 34%, 1);
+}
+
+body[dark=true] .content-select .btn-select,
+body[dark=true] .content-select .collapse .card {
+      background-color: hsla(0, 0%, 25%, 1);
+      color: hsla(0, 0%, 92%, 1);
+      border: none; 
+      box-shadow:0 0 10px 0 hsla(0, 0%, 18%, 1); 
+}
+
+body[dark=true] .content-select .collapse .card .element:hover {
+      color: hsla(0, 0%, 15%, 1);
+}
+
+body[dark=true] #configuracion-curso .menu {
+      color: hsla(0, 0%, 92%, 1);
+      background-color: hsla(0, 0%, 20%, 1);
+      border: 2px solid hsla(0, 0%, 25%, 1);      
+}
+
+body[dark=true] #configuracion-curso .menu label {
+      color: hsla(0, 0%, 92%, 1);
+}
+
+body[dark=true] .btn-primary,
+body[dark=true] #configuracion-curso .menu .btn.active {
+      background-color: hsla(180, 100%, 44%, 1);      
+      color:hsla(180, 100%, 17%, 1);  
+}
+
+body[dark=true] .btn-primary:hover,
+body[dark=true] #configuracion-curso .menu .btn.active:hover {
+      background-color: hsla(180, 100%, 64%, 1);
+}
+
+body[dark=true] .btn-outline-primary {
+      border-color: hsla(180, 100%, 44%, 1);     
+      color: hsla(180, 100%, 44%, 1);     
+}
+
+body[dark=true] .btn-outline-primary:hover {
+      background-color: hsla(180, 100%, 44%, 1);     
+      color:hsla(180, 100%, 17%, 1);    
+}
+
+ 

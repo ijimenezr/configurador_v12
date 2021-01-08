@@ -10,38 +10,48 @@ body {
 }
 
 a,
-button,
 video,
 audio,
+button:not(.btn-primary),
 input:focus {
     outline:0 !important;
     box-shadow: none !important;
 }
 
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: var(--color-primario);
+}
+
+#configuracion-curso .custom-checkbox,
+#configuracion-curso .content-select {
+    display: inline-block;
+    margin-right: 1rem;
+}
+
 .btn-link {
-    color: var(--color-1);
+    color: var(--color-primario);
 }
 
 .btn-link:hover {
-    color: var(--color-1-hover) !important;
+    color: var(--color-primario-hover);
 }
 
 .btn-outline-primary {
-    border-color: var(--color-1);
-    color: var(--color-1);
+    border-color: var(--color-primario);
+    color: var(--color-primario);
 }
 
 .btn-outline-primary:not(:disabled):not(.disabled):active, 
 .btn-outline-primary:not(:disabled):not(.disabled).active, 
 .show > .btn-outline-primary.dropdown-toggle,
 .btn-outline-primary:hover {    
-    background-color: var(--color-1);
-    border-color: var(--color-1);
+    background-color: var(--color-primario);
+    border-color: var(--color-primario);
     box-shadow: none;    
 }
 
 .btn-primary {
-    background-color: var(--color-1);
+    background-color: var(--color-primario);
     border: none;
 }
 
@@ -56,8 +66,8 @@ input:focus {
 .btn-primary:not(:disabled):not(.disabled):active, 
 .btn-primary:not(:disabled):not(.disabled).active, 
 .show > .btn-primary.dropdown-toggle {
-    background-color: var(--color-1-hover);
-    border-color: var(--color-1-hover);    
+    background-color: var(--color-primario-hover);
+    border-color: var(--color-primario-hover);    
     box-shadow: none;
 }
 
