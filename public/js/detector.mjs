@@ -1,4 +1,4 @@
-var isNavegador = {
+const isNavegador = {
     edge: () => {
         return navigator.userAgent.toLowerCase().search('edge') >= 0;
     },
@@ -13,7 +13,7 @@ var isNavegador = {
     }
 };
 
-var isDispositivo = {
+const isDispositivo = {
     Android: function () {
         return navigator.userAgent.match(/Android/i);
     },
@@ -22,4 +22,4 @@ var isDispositivo = {
     }
 }
 
-export {isNavegador, isDispositivo}
+export { isNavegador, isDispositivo }

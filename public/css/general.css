@@ -13,7 +13,8 @@ a,
 video,
 audio,
 button:not(.btn-primary),
-input:focus {
+input:focus,
+.custom-control-input:focus ~ .custom-control-label::before {
     outline:0 !important;
     box-shadow: none !important;
 }
@@ -79,10 +80,6 @@ h1, h2, h3, h4, h5, h6 {
 .alert {
     text-align: left;
 }
-
-
-
-
 
 
 

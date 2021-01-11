@@ -25,7 +25,7 @@
 
     /* Colores principales */
     --color-primario-dark: hsla(180, 100%, 44%, 1); 
-    --color-segundario-dark: hsla(180, 100%, 64%, 1);
+    --color-secundario-dark: hsla(180, 100%, 64%, 1);
     --color-text-dark: hsla(0, 0%, 92%, 1);
     --color-text-secundario-dark: hsla(180, 100%, 17%, 1); 
 
@@ -33,6 +33,9 @@
     --color-fondo-dark-1: hsla(0, 0%, 15%, 1);
     --color-fondo-dark-2: hsla(0, 0%, 20%, 1);
     --color-fondo-dark-3: hsla(0, 0%, 25%, 1);
+
+    /* Sombras */
+    --sombra-dark-1: 0px 0px 10px 0px hsla(0, 0%, 18%, 1);
     
 }
 

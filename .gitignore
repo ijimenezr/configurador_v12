@@ -3,3 +3,4 @@ node_modules
 curso/curso/*
 curso/scorm/*
 curso/*.zip
+.eslintrc.json

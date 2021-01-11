@@ -17,7 +17,7 @@ body[dark=true] input,
 body[dark=true] input:focus {
       background-color:var(--color-fondo-dark-3);
       border-color: hsla(0, 0%, 18%, 1);
-      box-shadow:0px 0px 10px 0px hsla(0, 0%, 18%, 1);
+      box-shadow: var(--sombra-dark-1);
       color: var(--color-text-dark);        
 }
 
@@ -26,17 +26,21 @@ body[dark=true] .btn-link {
 }
 
 body[dark=true] .btn-link:hover {
-      color: var(--color-segundario-dark);
+      color: var(--color-secundario-dark);
 }
 
-body[dark=true] .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-      background-color: hsla(180, 100%, 34%, 1);
+body[dark=true] .custom-checkbox .custom-control-input:checked~.custom-control-label::before {      
+      background-color: var(--color-fondo-dark-3);
+}
+
+body[dark=true] .custom-control-input:checked ~ .custom-control-label::before {
+      border: 1px solid var(--color-text-dark);
 }
 
 body[dark=true] #configuracion-curso #unidades .unidad .content {
       background-color:var(--color-fondo-dark-2);  
       border: none; 
-      box-shadow:0px 0px 10px 0px hsla(0, 0%, 18%, 1);   
+      box-shadow: var(--sombra-dark-1);
 }
 
 body[dark=true] #configuracion-curso #unidades .numUnidad {
@@ -53,7 +57,7 @@ body[dark=true] .content-select .collapse .card {
       background-color:var(--color-fondo-dark-3);
       color: var(--color-text-dark);
       border: none; 
-      box-shadow:0 0 10px 0 hsla(0, 0%, 18%, 1); 
+      box-shadow:var(--sombra-dark-1);
 }
 
 body[dark=true] .content-select .collapse .card .element:hover {
@@ -78,7 +82,7 @@ body[dark=true] #configuracion-curso .menu .btn.active {
 
 body[dark=true] .btn-primary:hover,
 body[dark=true] #configuracion-curso .menu .btn.active:hover {
-      background-color: var(--color-segundario-dark);
+      background-color: var(--color-secundario-dark);
 }
 
 body[dark=true] .btn-outline-primary {
@@ -91,4 +95,20 @@ body[dark=true] .btn-outline-primary:hover {
       color: var(--color-text-secundario-dark);    
 }
 
+body[dark=true] .modal-content {
+      background-color: var(--color-fondo-dark-1);      
+      border: 1px solid var(--color-text-dark);
+}
+
+body[dark=true] .modal-content .modal-header {
+      border-bottom: 1px solid var(--color-fondo-dark-3);
+}
+
+body[dark=true] .modal-content .modal-header .close {
+      color: var(--color-text-dark);
+}
+
+body[dark=true] .modal-backdrop.show {
+      opacity: 0.7;
+}
  
