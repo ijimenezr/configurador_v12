@@ -5,15 +5,15 @@ const setEjercicios = (tipo, orden) => {
 
       return `<!DOCTYPE html>
       <html lang="es">
-      
+
       <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-          <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+          <meta http-equiv="X-UA-Compatible" content="ie=edge">
           <title>Ejercicios de autoevaluación</title>
           <script src="js/load.js"></script>
       </head>
-      
+
       <body style="overflow: hidden;">
           <div id="precarga"
               style=" position: fixed; top: 0; left: 0; background-color: #000000; width: 100%; height: 100%; z-index: 4; color: #ffffff; overflow: hidden;">
@@ -27,7 +27,7 @@ const setEjercicios = (tipo, orden) => {
                   <div class="info-precarga"></div>
               </div>
           </div>
-      
+
           <!-- data-tipo="global" => para los test de evaluación -->
           <!-- data-tipo=""       => para los ejercicios de autoevaluación -->
           <!-- data-orden="1"     => para los test de evaluación indicar el número del test -->
@@ -40,9 +40,8 @@ const setEjercicios = (tipo, orden) => {
                       <div class="info-header"></div>
                   </div>
               </header>
+              <div class="pantalla ejercicios"></div>
           </div>
-          
-          <div class="pantalla ejercicios"></div>
       </body>
       </html>`;
 }
