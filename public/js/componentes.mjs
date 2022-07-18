@@ -49,7 +49,7 @@ const selectReiniciar = (contentSelect) => {
             const name = $(this).attr('data-name');
 
             $(this).find('.btn-select').find('.element').html(primerContenido);
-            if (!$(this).find('input[type="hidden]').length)
+            if (!$(this).find('input[type="hidden"]').length)
                   $(this).prepend(`<input type="hidden" name="${name}" value="${valor}">`);
       });
 }
