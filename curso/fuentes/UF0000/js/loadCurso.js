@@ -44,6 +44,6 @@ const cargarLoad = (url) => {
 	element.src = url + 'js/load.js';
 	element.defer = true;
 	head.appendChild(element);
-	element.src = url + 'js/loadDinamic.js';
-	head.appendChild(element);
+	// element.src = url + 'js/loadDinamic.js';
+	// head.appendChild(element);
 }
