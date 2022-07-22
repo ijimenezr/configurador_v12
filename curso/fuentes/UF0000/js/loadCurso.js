@@ -41,7 +41,6 @@ const cargarLoad = (url) => {
 	let head = document.getElementsByTagName('head')[0],
 		element = document.createElement('script');
 	element.src = url + 'js/load.js';
-	element.defer = true;
 	head.appendChild(element);
 	// element.src = url + 'js/loadDinamic.js';
 	// head.appendChild(element);
