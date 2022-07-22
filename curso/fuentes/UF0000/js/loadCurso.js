@@ -1,6 +1,6 @@
 let produccionCurso = "../0000comunes/comunes_v12/",
 	desarrolloCurso = "https://recursosadicionales.com/desarrollo/0000comunes/comunes_v12/",
-	urlCurso = produccion,
+	urlCurso = produccionCurso,
 	urlLoadDinamicCurso = urlCurso + 'js/loadDinamic.js';
 
 const reqCurso = new XMLHttpRequest();
