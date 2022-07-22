@@ -16,14 +16,6 @@ req.onloadend = () => {
 		urlLoadDinamic = url + 'js/loadDinamic.js';
 	}
 
-	// 	// Insertar el script que nos enlaza con el motor de la plantilla
-	// 	let head = document.getElementsByTagName('head')[0],
-	//   element = document.createElement('script');
-	// 	element.type = 'text/javascript';
-	// 	element.src = url + 'js/loadDinamic.js';
-	// 	element.defer = true;
-	// 	head.appendChild(element);
-
 	// Mensaje informativo
 	if (urlLoadDinamic.search('recursosadicionales') >= 0) {
 		console.log("MODO DESARROLLO");
@@ -42,6 +34,4 @@ const cargarLoad = (url) => {
 		element = document.createElement('script');
 	element.src = url + 'js/load.js';
 	head.appendChild(element);
-	// element.src = url + 'js/loadDinamic.js';
-	// head.appendChild(element);
 }
