@@ -1,19 +1,19 @@
-let produccionCurso = "../0000comunes/comunes_v12/",
-	desarrolloCurso = "https://recursosadicionales.com/desarrollo/0000comunes/comunes_v12/",
-	urlCurso = produccionCurso,
-	urlLoadDinamicCurso = urlCurso + 'js/loadDinamic.js';
+let produccion = "../0000comunes/comunes_v12/",
+	desarrollo = "https://recursosadicionales.com/desarrollo/0000comunes/comunes_v12/",
+	url = produccion,
+	urlLoadDinamic = url + 'js/loadDinamic.js';
 
-const reqCurso = new XMLHttpRequest();
-reqCurso.open('GET', urlLoadDinamicCurso);
-reqCurso.send();
+const req = new XMLHttpRequest();
+req.open('GET', urlLoadDinamic);
+req.send();
 
 // Comprobar que estamos en producción o trabajando en programación
-reqCurso.onloadend = () => {
+req.onloadend = () => {
 
 	// 	// Si no estamos en producción o programación cambiamos a desarrollo (maquetación)
-	if (reqCurso.status == 404) {
-		urlCurso = desarrollo;
-		urlLoadDinamicCurso = urlCurso + 'js/loadDinamic.js';
+	if (req.status == 404) {
+		url = desarrollo;
+		urlLoadDinamic = url + 'js/loadDinamic.js';
 	}
 
 	// 	// Insertar el script que nos enlaza con el motor de la plantilla
@@ -25,15 +25,15 @@ reqCurso.onloadend = () => {
 	// 	head.appendChild(element);
 
 	// Mensaje informativo
-	if (urlLoadDinamicCurso.search('recursosadicionales') >= 0) {
+	if (urlLoadDinamic.search('recursosadicionales') >= 0) {
 		console.log("MODO DESARROLLO");
-		cargarLoad(urlCurso)
+		cargarLoad(url)
 	} else if (window.location.host.search('.local') >= 0) {
 		console.info("MODO PROGRAMACIÓN");
-		cargarLoad(urlCurso)
+		cargarLoad(url)
 	} else {
 		console.info("MODO PRODUCCIÓN");
-		cargarLoad(urlCurso)
+		cargarLoad(url)
 	}
 }
 
