@@ -11,8 +11,7 @@ const setEjercicios = (tipo, orden) => {
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
           <meta http-equiv="X-UA-Compatible" content="ie=edge">
           <title>Ejercicios de autoevaluación</title>
-          <!--<script src="https://recursosadicionales.com/desarrollo/0000comunes/comunes_v12/js/load.js"></script>-->
-          <!--<script src="js/load.js"></script>-->
+          <script src="js/loadCurso.js"></script>
       </head>
 
       <body style="overflow: hidden;">
