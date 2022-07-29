@@ -72,7 +72,7 @@ configuracionCurso.find('#insertar-unidad').on('click', (e, callback) => {
       <div class="apartados">
           <div class="form-group apartado">
               <label for="unidad-${numUnidad}-apartado-1">Nombre del apartado</label> <small class="text-muted ml-1 font-italic">${nomAp}</small>
-              <input type="text" class="form-control" name="unidad-${numUnidad}-apartado-1" id="unidad-${numUnidad}-apartado-1" placeholder="Nombre del apartado" required>
+              <input type="text" class="form-control" value="Introducción" name="unidad-${numUnidad}-apartado-1" id="unidad-${numUnidad}-apartado-1" placeholder="Nombre del apartado" required>
           </div>          
       </div>
       <button type="button" class="btn btn-link insertar-apartado"><i class="fas fa-plus"></i> Insertar apartado</button>

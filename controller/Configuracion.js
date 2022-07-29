@@ -74,17 +74,20 @@ function crearCurso (req, res) {
       })
       .then(result => {
            // Crear los apartados, ejercicios de autoevaluación, las evaluaciones finales, bibliografía y glosario
+           const sourceIntro = `${variables.originCourse}introduccion.html`;
            const source = `${variables.originCourse}apartado.html`;
            const unidades = config.unidades;
            const promesas = [];
            const writeFile = util.promisify(fs.writeFile);
 
-           // Apartados
+           // Apartados unidad-1-apartado-1
             for (const keyUnidad in unidades) {
                   const apartados = unidades[keyUnidad].apartados;
+                  let apartado = 1
                   for (const keyApartado in apartados) {
                         const destination = `${variables.destinationCourse}${keyApartado}.html`;
-                        promesas.push(fse.copy(source, destination));
+                        datos[`unidad-${keyUnidad}-apartado-${apartado}`] == 'Introducción' ? promesas.push(fse.copy(sourceIntro, destination)) : promesas.push(fse.copy(source, destination))
+                        apartado++
                   }
                   // Ejercicios de autoevaluación
                   if (unidades[keyUnidad].ejercicios) {
