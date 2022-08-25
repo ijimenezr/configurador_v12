@@ -125,7 +125,7 @@ export default function (configuracionCurso) {
 
             // Pintar el contenido del archivo en el formulario
             reader.onload = (e) => {
-                 $('#input-file-config').val("");
+                  $('#input-file-config').val("");
                   config = JSON.parse(e.target.result);
 
                   // Título
@@ -150,8 +150,7 @@ export default function (configuracionCurso) {
                               $(`#unidad-${keyUnidad}`).val(unidades[keyUnidad].titulo);
 
                         // Ejercicios de autoevaluación
-                        if (unidades[keyUnidad].ejercicios)
-                              $(`#ejercicios-${keyUnidad}`).prop('checked', true);
+                        unidades[keyUnidad].ejercicios ? $(`#ejercicios-${keyUnidad}`).prop('checked', true) : $(`#ejercicios-${keyUnidad}`).prop('checked', false);
 
                         // Apartados
                         const apartados = unidades[keyUnidad].apartados;
