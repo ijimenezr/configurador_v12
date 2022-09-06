@@ -118,9 +118,10 @@ configuracionCurso.find('#unidades').on('click', '.insertar-apartado', (e, callb
   const nomAp = `ap01${urlUnidad}${urlAp}01.html`;
 
   const fragmentoApartado = `<div class="form-group apartado">
-    <label for="unidad-${numUnidad}-apartado-${numAp}">Nombre del apartado</label> <small class="text-muted ml-1 font-italic">${nomAp}</small>
+    <label for="unidad-${numUnidad}-apartado-${numAp}">Nombre del apartado</label> <small class="text-muted ml-1 font-italic">${nomAp}</small><button type="button" id="insertar-subapartado-${numAp}" class="btn btn-link insertar-subapartado"><i class="fas fa-plus"></i> Insertar subapartado</button>
     <input type="text" class="form-control" name="unidad-${numUnidad}-apartado-${numAp}" id="unidad-${numUnidad}-apartado-${numAp}" placeholder="Nombre del apartado" required>
     <button type="button" class="btn eliminar-apartado" data-toggle="tooltip" data-placement="top" title="Eliminar apartado"><i class="far fa-trash-alt"></i></button>
+    <div class="subapartados-${numAp}"></div>
   </div>`;
 
   // Insertar fragmento
@@ -132,7 +133,32 @@ configuracionCurso.find('#unidades').on('click', '.insertar-apartado', (e, callb
 
 // Eliminar apartado
 configuracionCurso.find('#unidades').on('click', '.eliminar-apartado', (e) => {
+  $('.tooltip-inner').remove()
   $(e.target).parents('.apartado').remove();
+});
+
+//Insertar subapartado
+configuracionCurso.find('#unidades').on('click', '.insertar-subapartado', (e, callback) => {
+  const numAp = e.currentTarget.id.split('-')[2]
+  const numSub = $(e.target).parents('.apartado').find('.subapartado').find('.subapartado').length + 1;
+
+  const fragmentoSubapartado = `<div class="form-group subapartado">
+    <label for="subapartado-${numAp}-${numSub}">Nombre del subapartado</label>
+    <input type="text" class="form-control" name="subapartado-${numAp}-${numSub}" id="subapartado-${numAp}-${numSub}" placeholder="Nombre del subapartado" required>
+    <button type="button" class="btn eliminar-subapartado" data-toggle="tooltip" data-placement="top" title="Eliminar subapartado"><i class="far fa-trash-alt"></i></button>
+  </div>`;
+
+  // Insertar fragmento
+  $(e.target).parents('.unidad').find(`.subapartados-${numAp}`).append(fragmentoSubapartado);
+  $('[data-toggle="tooltip"]').tooltip();
+
+  if (callback !== undefined) callback();
+})
+
+// Eliminar subapartado
+configuracionCurso.find('#unidades').on('click', '.eliminar-subapartado', (e) => {
+  $('.tooltip-inner').remove()
+  $(e.target).parents('.subapartado').remove();
 });
 
 // Ir a unidad

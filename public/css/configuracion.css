@@ -120,8 +120,26 @@ label {
     padding: 0;    
 }
 
+#configuracion-curso #unidades .unidad .content .subapartados {
+    margin-bottom: 2rem;
+}
+
+#configuracion-curso #unidades .unidad .content .subapartado {
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    width: 99%;
+    margin-left: 1%;
+}
+
+#configuracion-curso #unidades .insertar-subapartado {
+    float: right;
+    margin-bottom: 0.5rem;
+    margin-right: 5%;
+}
+
 #configuracion-curso #unidades .eliminar-unidad,
-#configuracion-curso #unidades .eliminar-apartado {
+#configuracion-curso #unidades .eliminar-apartado,
+#configuracion-curso #unidades .eliminar-subapartado {
     color: var(--color-primario);
 }
 

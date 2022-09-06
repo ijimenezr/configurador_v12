@@ -10,6 +10,7 @@ export default function (configuracionCurso) {
       // Limpiar el formulario
       $('#limpiar').on('click', () => {
             formulario.find('input[type=text], input[type=number]').val('');
+            $('#unidad-1-apartado-1').val('Introducción')
             // Eliminar todas las unidades con sus apartados correspondientes
             configuracionCurso.find('#unidades').find('.unidad:not(#ud-1)').remove();
             configuracionCurso.find('#ud-1').find('.apartados').find('.apartado:not(:first-child)').remove();
@@ -41,7 +42,7 @@ export default function (configuracionCurso) {
             if (enviar) {
                   const url = $(this).attr('action');
                   const method = $(this).attr('method');
-
+                  console.log($(this))
                   $.ajax({
                         url: url,
                         method: method,
