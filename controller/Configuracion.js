@@ -27,9 +27,8 @@ function crearCurso(req, res) {
                   // Nombre del fichero del apartado
                   nomApartado = nombreApartado(unidad, apartado);
                   if (key.toLowerCase().includes("apartado")) {
-
                         if (config.unidades[unidad].apartados === undefined) config.unidades[unidad].apartados = {};
-                        config.unidades[unidad].apartados[nomApartado] = datos[key];
+                        config.unidades[unidad].apartados[nomApartado] = {apartado: datos[key]};
                   } else if (key.toLowerCase().includes("unidad")) {
                         unidad = key.replace("unidad-", "");
 
@@ -50,8 +49,8 @@ function crearCurso(req, res) {
                         (datos['check-glosario']) ? config.glosario = true : config.glosario = false;
                   else config[key] = datos[key];
             } else {
-                  if (config.unidades[unidad].subapartados === undefined) config.unidades[unidad].subapartados = {};
-                  config.unidades[unidad].subapartados[apartado] = datos[key];
+                  if (config.unidades[unidad].apartados[nomApartado].subapartados === undefined) config.unidades[unidad].apartados[nomApartado].subapartados = {};
+                  config.unidades[unidad].apartados[nomApartado].subapartados[key] = datos[key];
             }
       }
 

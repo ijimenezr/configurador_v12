@@ -139,12 +139,13 @@ configuracionCurso.find('#unidades').on('click', '.eliminar-apartado', (e) => {
 
 //Insertar subapartado
 configuracionCurso.find('#unidades').on('click', '.insertar-subapartado', (e, callback) => {
+  const numUni = $(e.target).parents('.unidad').index();
   const numAp = e.currentTarget.id.split('-')[2]
-  const numSub = $(e.target).parents('.apartado').find('.subapartado').find('.subapartado').length + 1;
+  const numSub = $(e.target).parent().find(`.subapartados-${numAp}`).find('.subapartado').length + 1;
 
   const fragmentoSubapartado = `<div class="form-group subapartado">
-    <label for="subapartado-${numAp}-${numSub}">Nombre del subapartado</label>
-    <input type="text" class="form-control" name="subapartado-${numAp}-${numSub}" id="subapartado-${numAp}-${numSub}" placeholder="Nombre del subapartado" required>
+    <label for="subapartado-${numUni}-${numAp}-${numSub}">Nombre del subapartado</label>
+    <input type="text" class="form-control" name="subapartado-${numUni}-${numAp}-${numSub}" id="subapartado-${numUni}-${numAp}-${numSub}" placeholder="Nombre del subapartado" required>
     <button type="button" class="btn eliminar-subapartado" data-toggle="tooltip" data-placement="top" title="Eliminar subapartado"><i class="far fa-trash-alt"></i></button>
   </div>`;
 
