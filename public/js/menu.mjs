@@ -161,10 +161,31 @@ export default function (configuracionCurso) {
 
                               if (index > 1) {
                                     $(`#ud-${keyUnidad}`).find('.insertar-apartado').trigger('click', () => {
-                                          $(`#unidad-${keyUnidad}-apartado-${index}`).val(apartados[keyApartado]);
+                                          $(`#unidad-${keyUnidad}-apartado-${index}`).val(apartados[keyApartado]['apartado']);
+                                          if (apartados[keyApartado]['subapartados'] !== undefined) {
+                                                let contSub = 1
+                                                for (const sub in apartados[keyApartado]['subapartados']) {
+                                                      const subapartado = apartados[keyApartado]['subapartados'][sub];
+                                                      $(`#ud-${keyUnidad}`).find(`#insertar-subapartado-${sub.split('-')[2]}`).trigger('click', () => {
+                                                            $(`#subapartado-${keyUnidad}-${sub.split('-')[2]}-${contSub}`).val(subapartado)
+                                                            contSub++
+                                                      })
+                                                }
+                                          }
                                     });
-                              } else
-                                    $(`#unidad-${keyUnidad}-apartado-${index}`).val(apartados[keyApartado]);
+                              } else {
+                                    $(`#unidad-${keyUnidad}-apartado-${index}`).val(apartados[keyApartado]['apartado']);
+                                    if (apartados[keyApartado]['subapartados'] !== undefined) {
+                                          let contSub = 1
+                                          for (const sub in apartados[keyApartado]['subapartados']) {
+                                                const subapartado = apartados[keyApartado]['subapartados'][sub];
+                                                $(`#ud-${keyUnidad}`).find(`#insertar-subapartado-${sub.split('-')[2]}`).trigger('click', () => {
+                                                      $(`#subapartado-${keyUnidad}-${sub.split('-')[2]}-${contSub}`).val(subapartado)
+                                                      contSub++
+                                                })
+                                          }
+                                    }
+                              }
                         }
                   }
 
