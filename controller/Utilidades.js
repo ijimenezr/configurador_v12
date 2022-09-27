@@ -1,4 +1,4 @@
-const setEjercicios = (tipo, orden) => {
+const setEjercicios = (tipo, orden, nombre) => {
 
       tipo = tipo != undefined ? tipo : "";
       orden = orden != undefined ? orden : "";
@@ -10,7 +10,7 @@ const setEjercicios = (tipo, orden) => {
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
           <meta http-equiv="X-UA-Compatible" content="ie=edge">
-          <title>Ejercicios de autoevaluación</title>
+          <title>${nombre}</title>
           <script src="js/loadCurso.js"></script>
       </head>
 
@@ -40,7 +40,9 @@ const setEjercicios = (tipo, orden) => {
                       <div class="info-header"></div>
                   </div>
               </header>
-              <div class="pantalla ejercicios"></div>
+              <div class="pantalla ejercicios">
+              
+              </div>
           </div>
       </body>
       </html>`;

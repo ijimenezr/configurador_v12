@@ -99,7 +99,7 @@ function crearCurso(req, res) {
                               const num = Object.keys(apartados).length + 1;
                               const nomApartado = nombreApartado(keyUnidad, num);
                               const destination = `${variables.destinationCourse}${nomApartado}.html`;
-                              const ejercicios = setEjercicios();
+                              const ejercicios = setEjercicios('', '', 'Ejercicios de autoevaluación');
                               promesas.push(writeFile(destination, ejercicios));
                         }
                   }
@@ -111,7 +111,7 @@ function crearCurso(req, res) {
                         const numEv = (totalUnidades < 9) ? '0' + totalUnidades : totalUnidades;
                         const nomEvaluacion = `ap01${numEv}0101`;
                         const destination = `${destinationCourse}${nomEvaluacion}.html`;
-                        const ejercicios = setEjercicios("global", i);
+                        const ejercicios = setEjercicios("global", i, 'Prueba de evaluación');
                         promesas.push(writeFile(destination, ejercicios));
                   }
 
