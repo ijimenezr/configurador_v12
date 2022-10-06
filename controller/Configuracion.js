@@ -108,7 +108,7 @@ function crearCurso(req, res) {
                   const num = config.numTest;
                   for (let i = 1; i <= num; i++) {
                         const totalUnidades = Object.keys(unidades).length + i;
-                        const numEv = (totalUnidades < 9) ? '0' + totalUnidades : totalUnidades;
+                        const numEv = (totalUnidades <= 9) ? '0' + totalUnidades : totalUnidades;
                         const nomEvaluacion = `ap01${numEv}0101`;
                         const destination = `${destinationCourse}${nomEvaluacion}.html`;
                         const ejercicios = setEjercicios("global", i, 'Prueba de evaluación');
