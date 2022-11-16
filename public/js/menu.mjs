@@ -138,6 +138,7 @@ export default function (configuracionCurso) {
                   // Tema
                   const tema = $('#collapseTemas').find(`[data-value=${config.tema}]`).parents('.element').html();
                   $('.content-select[data-name=tema]').find('.btn-select').find('.element').html(tema);
+                  $('.content-select[data-name=tema]').find('input[name="tema"]').val(config.tema)
 
                   // Unidades
                   const unidades = config.unidades;
