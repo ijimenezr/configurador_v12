@@ -6,8 +6,11 @@
 
     <nav class="menu">  
         <div class="container">
+            <button type="button" class="btn btn-primary" id="generadorInformes" style="padding: 0.5em 1em; margin-right: 1.5em;">
+                <i class="fas fa-file"></i> Generador de informes
+            </button>
             <a href="#general" class="btn btn-outline-primary active">Configuración del curso</a>
-            <a href="#unidades" class="btn btn-outline-primary">Unidades <span class="badge badge-light">1</a> 
+            <a href="#unidades" class="btn btn-outline-primary">Unidades <span class="badge badge-light">1</span></a>
             <div class="form-group buscar">
                 <label for="ir-a-unidad">Ir a unidad</label>    
                 <input type="number" min="1" name="ir-a-unidad" id="ir-a-unidad" class="form-control">
@@ -40,19 +43,60 @@
                 </div>
 
                 <!-- BIBLIOGRAFÍA Y GLOSARIO -->
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
+                <div class="form-group biblio-glosa">
+                    <div class="custom-control custom-checkbox" id="content_loadBiblio">
                         <input type="checkbox" class="custom-control-input" name="check-biblio" id="check-biblio" checked="checked">                        
-                        <label class="custom-control-label" for="check-biblio">
-                            Bibliografía
-                        </label>
+                        <label class="custom-control-label" for="check-biblio">Bibliografía</label>
+                        <a style="color: var(--color-primario);" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-angle-down"></i></a>
+                        <div class="collapse" id="collapseExample" style="width: 100%; margin-top: 0;">
+                            <div class="card card-body">
+                                <div class="content_biblios" id="content_monografias">
+                                    <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                        <h4 style="margin: 0;">Monografías&nbsp;</h4>
+                                        <button type="button" id="b_infoMono" class="b_info"><i class="fas fa-info"></i></button>
+                                    </div>
+                                    <div class="form-group bibliografias">
+                                        <div class="summernote form-control" id="summernote-content_monografias"><p class="info"><span class="autor">Autor </span><span class="titulo">Título </span><span class="origen">Origen</span></p><p class="descripcion">Descripción</p></div>
+                                        <textarea style="display: none;" required data-editor="editor"><p class="info"><span class="autor">Autor </span><span class="titulo">Título </span><span class="origen">Origen</span></p><p class="descripcion">Descripción</p></textarea>
+                                        <button type="button" class="eliminar_biblio"><span class="fas fa-trash" aria-hidden="true"></span></button>
+                                    </div>
+                                    <button type="button" id="insertar-monografia" class="btn btn-primary anadir_biblio"><span class="fas fa-plus" aria-hidden="true"></span> Añadir monografía</button>
+                                </div>
+                                <div class="content_biblios" id="content_textos">
+                                    <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                        <h4 style="margin: 0;">Textos electrónicos, bases de datos y programas informáticos&nbsp;</h4>
+                                        <button type="button" id="b_infoTextos" class="b_info"><i class="fas fa-info"></i></button>
+                                    </div>
+                                    <div class="form-group bibliografias">
+                                        <div class="summernote form-control" id="summernote-content_textos"><p class="titulo">Título. <a href="" class="enlace" target="_blank" title="Pulsa para ver el contenido">Enlace</a></p><p class="descripcion">Descripción</p></div>
+                                        <textarea style="display: none;" required data-editor="editor"><p class="titulo">Título. <a href="" class="enlace" target="_blank" title="Pulsa para ver el contenido">Enlace</a></p><p class="descripcion">Descripción</p></textarea>
+                                        <button type="button" class="eliminar_biblio"><span class="fas fa-trash" aria-hidden="true"></span></button>
+                                    </div>
+                                    <button type="button" id="insertar-textos" class="btn btn-primary anadir_biblio"><span class="fas fa-plus" aria-hidden="true"></span> Añadir texto electrónico, base de datos o programa informático</button>
+                                </div>
+                                <div class="content_biblios" id="content_legislacion">
+                                    <div style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+                                        <h4 style="margin: 0;">Legislación y normativa&nbsp;</h4>
+                                        <button type="button" id="b_infoLegis" class="b_info"><i class="fas fa-info"></i></button>
+                                    </div>
+                                    <div class="form-group bibliografias">
+                                        <div class="summernote form-control" id="summernote-content_legislacion"><p class="titulo">Título. <a href="" class="enlace" target="_blank">Enlace</a></p><p class="disponible">Descripción</p></div>
+                                        <textarea style="display: none;" required data-editor="editor"><p class="titulo">Título. <a href="" class="enlace" target="_blank">Enlace</a></p><p class="disponible">Descripción</p></textarea>
+                                        <button type="button" class="eliminar_biblio"><span class="fas fa-trash" aria-hidden="true"></span></button>
+                                    </div>
+                                    <button type="button" id="insertar-legislacion" class="btn btn-primary anadir_biblio"><span class="fas fa-plus" aria-hidden="true"></span> Añadir legislación o normativa</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="custom-control custom-checkbox">
+                    
+                    <div class="custom-control custom-checkbox" id="content_loadGlosa">
                         <input type="checkbox" class="custom-control-input" name="check-glosario" id="check-glosario" checked="checked">
-                        <label class="custom-control-label" for="check-glosario">
-                            Glosario
-                        </label>
+                        <label class="custom-control-label" for="check-glosario">Glosario</label>
+                        <button id="b_loadGlosa" class="btn btn-primary">Cargar glosario</button>
+                        <input type="file" id="loadGlosa" accept=".txt,.docx,.doc">
+                        <button id="b_editGlosa" class="btn btn-primary ocultar">Editar glosario</button>
+                        <button type="button" id="b_infoGlosa" class="b_info"><i class="fas fa-info"></i></button>
                     </div>
                 </div>
 
@@ -146,6 +190,17 @@
                                 </label>
                             </div>
                         </div>
+
+                        <!-- RESUMEN DE LA UNIDAD -->
+                        <div class="form-group resumen">
+                            <div class="custom-control custom-checkbox">
+                                <!-- <input type="checkbox" class="custom-control-input" name="resumen-1" id="resumen-1" checked="checked"> -->
+                                <input type="checkbox" class="custom-control-input" name="resumen-1" id="resumen-1">
+                                <label class="custom-control-label" for="resumen-1">
+                                    Resumen de la unidad 1
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -159,6 +214,7 @@
                 <input type="file" id="input-file-config" accept=".json" />
                 <button type="button" id="generar-scorm" class="btn btn-primary" title="Generar Scorm" data-toggle="tooltip" data-placement="left" disabled><i class="fas fa-file-archive"></i></button>
                 <button type="button" class="btn btn-primary" title="Limpiar" data-toggle="tooltip" data-placement="right" id="limpiar"><i class="fas fa-eraser"></i></button>                
+                <button type="button" id="cargarCursos" class="btn btn-primary" title="Cargar cursos anteriores" data-toggle="tooltip" data-placement="right"><i class="fas fa-database"></i></button>
                 <button type="button" class="btn btn-primary" title="Ir al principio" data-toggle="tooltip" data-placement="right" id="ir-principio"><i class="fas fa-level-up-alt"></i></button>
                 <button type="button" class="btn btn-primary" title="Cambiar a modo noche" data-toggle="tooltip" data-placement="right" id="color-scheme" data-color="dark"></button>
             </div>

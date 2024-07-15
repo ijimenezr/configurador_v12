@@ -1,7 +1,50 @@
-    <script src="/js/jquery.js"></script>
-    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/all.js"></script>
-    <script type="module" src="/js/configuracion.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/all.js"></script>
+<script type="text/javascript" src="/js/indexedDB.js"></script>
+<script type="module" src="/js/configuracion.js"></script>
+<script type="text/javascript" src="/js/summernote.js"></script>
+<script type="text/javascript" src="js/lang/summernote-es-ES.js"></script>
+<script type="text/javascript" src="/js/estructuras.js"></script>
+<script type="text/javascript" src="/js/readXML.mjs"></script>
+<script src="https://cdn.jsdelivr.net/npm/mammoth@1.4.8/mammoth.browser.min.js"></script>
+<script>
+    // Wysiwyg
+    function loadWysiwyg() {
+        $('.summernote').summernote({
+            lang: 'es-ES',
+            minHeight: 75,
+            disableDragAndDrop: true,
+            toolbar: [
+                ['para', ['ul']],
+                ['style', ['p', 'bold', 'italic']],
+                ['fontname', ['fontname']],
+                ['link', ['link', 'insert', 'unlink']],
+                ['view', ['codeview']]
+            ],
+            fontname: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New'],
+            disableResizeEditor: true,
+            callbacks: {
+                onPaste: function (e) {
+                    var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+                    e.preventDefault();
+                    document.execCommand('insertText', false, bufferText);
+                },
+                // Limpiar los datos default del summernote para este completamente vacio
+                onKeyup: function (e) {
+                    var code = $(this).summernote('code');
+                    var value = code.replace(/\r?\n/g, "").replace(/\s/g, "");
+                    if ((code === '<p><br></p><ul></ul>') || (code === '<p><br></p>')) {
+                        $(this).siblings('.note-editor').find('.note-editable, .note-codable').empty();
+                        $(this).next('textarea').empty();
+                    }
+                }
+            }
+        });
+        $('.note-popover').remove();
+    }
+</script>
 </body>
+
 </html>

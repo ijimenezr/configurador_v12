@@ -1,0 +1,34 @@
+Acción protectora: hace referencia a un conjunto de medidas que pone en funcionamiento la Seguridad Social para prever, reparar o superar determinadas situaciones de infortunio o estados de necesidad concretos, que suelen originar una pérdida de ingresos o un exceso de gastos en las personas que los sufren.
+Autoliquidación: método de cálculo y comunicación de cotizaciones en el que es el propio usuario quien realiza los cálculos y remite los resultados a la Administración. Este sistema ha sido usado hasta la entrada en vigor del sistema de liquidación directa.
+Base de cotización: es aquella cantidad sobre la que se aplica un porcentaje denominado tipo de cotización y cuya cuantía se destina a la cobertura de ciertas incidencias, como pueden ser una enfermedad, desempleo, etc.
+Base salarial: constituye una parte de la retribución que percibe la persona trabajadora y que queda fijada solo por unidad de tiempo.
+Certificado digital: hace referencia a un fichero informático, generado por una entidad de servicios de certificación, que asocia unos datos de identidad a una persona física, organismo o empresa, confirmando de esta manera su identidad digital en internet.
+Cotización: cantidades abonadas por empresa y trabajador para cubrir prestaciones futuras (jubilación, desempleo, formación profesional, etc.) que son retiradas mes a mes del salario. Una parte del pago corresponde a la empresa y otra a la persona trabajadora, aunque ambas son ingresadas conjuntamente.
+Desplazamiento: comprende el cambio de la persona trabajadora del centro de trabajo habitual de manera temporal para prestar sus servicios.
+Empresario: puede ser una persona física, jurídica o comunidad de bienes, cuyo principal cometido es el de retribuir económicamente los servicios recibidos.
+Extinción del contrato: significa que el acuerdo entre la empresa y la persona trabajadora queda roto de forma definitiva, por lo que la persona trabajadora no tiene necesidad de seguir prestando sus servicios en la empresa y esta no tiene que remunerarla.
+Finiquito: es el documento resultado de la extinción de la relación laboral, donde la persona trabajadora ratifica cuotas que la empresa tenía pendientes de pago.
+Fondo de Garantía Salarial (FOGASA): entidad cuya función es abonar los salarios de las personas trabajadoras en los supuestos en los que la empresa no pueda hacer frente a estos.
+Grupo de cotización: se puede definir como la clasificación, a efectos de cotización a la Seguridad Social (S. S.), de las diferentes categorías profesionales existentes.
+Horas de fuerza mayor: son horas que la persona trabajadora debe cumplir obligatoriamente a causa de desastres naturales, incendio, etc.
+Horas extraordinarias: horas de trabajo que se realizan sobre la duración máxima de la jornada ordinaria de trabajo, que al año no podrá ser superior a ochenta horas.
+Ingresos a cuenta del IRPF: hace referencia a las cantidades que se ingresan en la Administración tributaria por el pagador de determinadas rentas, por estar así establecido en la ley, como anticipo de la cuota del impuesto que ha de pagar el perceptor de aquellas.
+Jornada especial: distribuciones diferentes de la jornada de trabajo para determinados sectores y trabajos que por sus peculiaridades requieren la ampliación o limitación de la jornada laboral.
+Jornada laboral: es el período de tiempo que pasa entre la entrada de la persona trabajadora a su puesto de trabajo hasta que lo abandona.
+Modalidad contributiva: hace referencia a aquellas prestaciones que los perceptores reciben por haber cotizado durante su vida laboral.
+Modalidad no contributiva: hace referencia a aquellas prestaciones que recibirán sus perceptores y que no requieren de una cotización previa para su otorgamiento.
+Mutuas patronales: son asociaciones de empresarios que se agrupan para gestionar conjuntamente una serie de servicios relacionados con la atención a sus trabajadores por accidentes de trabajo y enfermedades profesionales.
+Pagas extraordinarias o gratificaciones: son compensaciones económicas de carácter periódico cuya periodicidad supera el mes.
+Recibo del salario: también conocido como el recibo individual justificativo del pago de salarios, es un justificante del pago por parte de la empresa a la persona trabajadora, en el que además se especifican las partidas que componen la retribución salarial.
+RLC: recibo de liquidación de cotizaciones o documento de pago de cotizaciones. Es emitido por Tesorería y el plazo máximo para su ingreso es el último día del mes.
+RNT: relación nominal de trabajadores. Lista de afiliados en un CCC durante un período con sus bases de cotización individualizadas cuya totalización constituye el RLC.
+Salario bruto: es el total devengado, es la suma de todos los importes. A esta se le van a descontar los impuestos y aportaciones a la Seguridad Social, dando lugar al salario neto, que es el que cobra la persona trabajadora.
+Salario mínimo interprofesional (SMI): lo fija el Gobierno con una periodicidad de un año, y supone la regulación mínima que debe percibir la persona trabajadora, sin tener en cuenta la actividad que esta realiza cada día de trabajo.
+Seguridad Social: se puede definir como el conjunto de medidas tomadas por el Estado cuyo propósito es la protección, ayuda, prevención y el remedio ante acontecimientos de riesgos, desamparo o siniestro de los ciudadanos.
+SILTRA: programa de la Tesorería General de la Seguridad Social para facilitar la utilización del sistema RED, por lo que facilita el intercambio de información y documentos entre las distintas entidades a través de medios telemáticos.
+Sistema de liquidación directa: es el sistema de intercambio de datos, relativos a las cotizaciones, entre la Tesorería General de la Seguridad Social (TGSS) y la empresa.
+Sistema RED (remisión electrónica de documentos): hace referencia al servicio que ofrece la TGSS a las empresas, con la finalidad de permitir el intercambio de información y documentos entre ambas entidades a través de internet. Dicho sistema aborda los ámbitos de actuación de la cotización, afiliación e INSS.
+Trabajador: es una persona física, que realiza un trabajo por cuenta ajena, voluntaria, dependiente y a cambio de un salario.
+Tramo: cada uno de los subperíodos en los que se divide el período de cotización de una persona trabajadora motivados por circunstancias diferentes de cotización.
+Traslado: comprende el cambio de la persona trabajadora del centro de trabajo habitual de manera permanente. Por ello, esta suele habitualmente cambiar su lugar de residencia.
+Vacaciones laborales: es el período de descanso retribuido, cuyo disfrute se fijará por acuerdo entre empresa y trabajador, según lo establecido en el convenio colectivo de aplicación. 

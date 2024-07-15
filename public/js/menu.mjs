@@ -1,4 +1,4 @@
-import { selectReiniciar } from "./componentes.mjs";
+import { cargarDatos, cargarInformeCurso, generarBiblioTextArea, selectReiniciar } from "./componentes.mjs";
 
 // MENÚ LATERAL DE OPCIONES
 export default function (configuracionCurso) {
@@ -14,25 +14,64 @@ export default function (configuracionCurso) {
             // Eliminar todas las unidades con sus apartados correspondientes
             configuracionCurso.find('#unidades').find('.unidad:not(#ud-1)').remove();
             configuracionCurso.find('#ud-1').find('.apartados').find('.apartado:not(:first-child)').remove();
+            configuracionCurso.find('.biblio-glosa').find('.bibliografias').remove()
+            configuracionCurso.find('.biblio-glosa').find('.anadir_biblio').trigger('click')
+            configuracionCurso.find('.biblio-glosa').find('#content_loadBiblio a[data-toggle="collapse"].click').trigger('click')
+            configuracionCurso.find('.biblio-glosa').find('textarea').remove();
+            configuracionCurso.find('.biblio-glosa').find('#b_editGlosa').addClass('ocultar');
             selectReiniciar();
 
             // Desactivar el botón genear scorm
             $('#generar-scorm').attr('disabled', 'disabled');
       });
 
-      // Ir al principio
-      $('#ir-principio').on('click', () => {
-            $('html,body').animate({ scrollTop: 0 }, 1000);
+      // Cargar cursos anteriores
+      $('#cargarCursos').on('click', (e) => {
+            const contenido = getIndexedDBAll()
+            $('body').addClass('cargarCursosClick')
+            $('body').find('.pantallaEmergente').remove()
+            $('body').append(`<div class="pantallaEmergente"><div><div class="titulo"><h2>Cargar cursos</h2><button type="button" class="close" data-dismiss="modal" aria-label="Cerrar ventana"><span aria-hidden="true">×</span></button></div><div class="listaCursos"><ul><li class="li_guia"><p>Fecha</p><p>Título</p></li></ul></div></div></div>`)
+
+            contenido.getAll().onsuccess = event => {
+                  const resultado = event.currentTarget.result;
+                  resultado.length > 10 && eliminarIndexDB(resultado, contenido);
+                  for (const key in resultado) $('.pantallaEmergente').find('ul .li_guia').after(`<li id="${resultado[key].id}"><p>${resultado[key].fecha}</p><p>${resultado[key].titulo}</p><button type="button" class="btn btn-primary eliminarConfig" title="Eliminar config de ${resultado[key].titulo}" data-toggle="tooltip" data-placement="right"><i class="fas fa-trash"></i></button></li>`)
+
+                  $('.pantallaEmergente').find('ul li').on('click', e => {
+                        let datos = seleccionarIndexDB(e.currentTarget.id)
+                        datos.onsuccess = event => {
+                              if (datos.result !== undefined) {
+                                    let data = event.currentTarget.result;
+                                    cargarDatos(data.datos)
+                                    $('body').find('.pantallaEmergente').remove()
+                                    $('body').removeClass('cargarCursosClick')
+                              }
+                        }
+                        datos.onerror = e => console.log("ERROR - error al cargar config: " + e);
+                  });
+                  $('.pantallaEmergente').find('ul .eliminarConfig').on('click', e => eliminarSelected(parseInt($(e.currentTarget).parent().attr('id'))))
+            }
+            contenido.getAll().onerror = e => console.log("ERROR - error cargando cursos anteriores: " + e);
+
+            $('.pantallaEmergente').find('.close').on('click', () => {
+                  $('body').find('.pantallaEmergente').remove()
+                  $('body').removeClass('cargarCursosClick')
+            })
       });
+
+      // Ir al principio
+      $('#ir-principio').on('click', () => $('html,body').animate({ scrollTop: 0 }, 1000));
 
       // Enviar datos de formulario
       formulario.on('submit', function (e) {
             e.preventDefault();
+            $('#collapseExample .note-editor.note-frame.panel.panel-default.codeview').find('.btn-codeview').trigger('click')
+            generarBiblioTextArea()
 
             // Verificar que todos los campos estan completados
             let enviar = true;
             $(this).find('input[type=text]').each((index, element) => {
-                  if (element.value === '') {
+                  if (element.value === '' && !$(element).parents('.modal-body').length) {
                         enviar = false;
                         return false;
                   }
@@ -40,9 +79,10 @@ export default function (configuracionCurso) {
 
             // Generar curso
             if (enviar) {
+                  console.log($(this).attr('action'), $(this).attr('method'))
                   const url = $(this).attr('action');
                   const method = $(this).attr('method');
-                  console.log($(this))
+                  // console.log($(this).serialize())
                   $.ajax({
                         url: url,
                         method: method,
@@ -52,10 +92,13 @@ export default function (configuracionCurso) {
                         },
                         success: function (respuesta) {
                               $('#modal-descargar-curso').modal('show');
+                              cargarInformeCurso(respuesta.config)
                               $('#descargar-curso').attr('href', `/descargarCurso/${respuesta.titulo}`);
                               $('#generar-scorm').removeAttr('disabled');
                               console.log(`El curso "${respuesta.titulo}" ha sido generado con éxito.`);
                               config = respuesta.config;
+                              // console.log(respuesta)
+                              setIndexedDB(config)
                         },
                         error: function (jqXHR, textStatus, errorThrown) {
                               console.log("Error al generar el curso.");
@@ -128,76 +171,33 @@ export default function (configuracionCurso) {
             reader.onload = (e) => {
                   $('#input-file-config').val("");
                   config = JSON.parse(e.target.result);
-
-                  // Título
-                  $('#tituloCurso').val(config.tituloCurso);
-
-                  // Número de ejercicios de evaluación finales
-                  $('#numTest').val(config.numTest);
-
-                  // Tema
-                  const tema = $('#collapseTemas').find(`[data-value=${config.tema}]`).parents('.element').html();
-                  $('.content-select[data-name=tema]').find('.btn-select').find('.element').html(tema);
-                  $('.content-select[data-name=tema]').find('input[name="tema"]').val(config.tema)
-
-                  // Unidades
-                  const unidades = config.unidades;
-                  for (const keyUnidad in unidades) {
-                        // Título de la unidad - insertar el fragmento de la unidad
-                        if (keyUnidad > 1)
-                              $('#insertar-unidad').trigger('click', () => {
-                                    $(`#unidad-${keyUnidad}`).val(unidades[keyUnidad].titulo);
-                              });
-                        else
-                              $(`#unidad-${keyUnidad}`).val(unidades[keyUnidad].titulo);
-
-                        // Ejercicios de autoevaluación
-                        unidades[keyUnidad].ejercicios ? $(`#ejercicios-${keyUnidad}`).prop('checked', true) : $(`#ejercicios-${keyUnidad}`).prop('checked', false);
-
-                        // Apartados
-                        const apartados = unidades[keyUnidad].apartados;
-                        for (const keyApartado in apartados) {
-                              // Obtener el orden del apartado
-                              const index = parseInt(keyApartado.substring(6, 8));
-
-                              if (index > 1) {
-                                    $(`#ud-${keyUnidad}`).find('.insertar-apartado').trigger('click', () => {
-                                          $(`#unidad-${keyUnidad}-apartado-${index}`).val(apartados[keyApartado]['apartado']);
-                                          if (apartados[keyApartado]['subapartados'] !== undefined) {
-                                                let contSub = 1
-                                                for (const sub in apartados[keyApartado]['subapartados']) {
-                                                      const subapartado = apartados[keyApartado]['subapartados'][sub];
-                                                      $(`#ud-${keyUnidad}`).find(`#insertar-subapartado-${sub.split('-')[2]}`).trigger('click', () => {
-                                                            $(`#subapartado-${keyUnidad}-${sub.split('-')[2]}-${contSub}`).val(subapartado)
-                                                            contSub++
-                                                      })
-                                                }
-                                          }
-                                    });
-                              } else {
-                                    $(`#unidad-${keyUnidad}-apartado-${index}`).val(apartados[keyApartado]['apartado']);
-                                    if (apartados[keyApartado]['subapartados'] !== undefined) {
-                                          let contSub = 1
-                                          for (const sub in apartados[keyApartado]['subapartados']) {
-                                                const subapartado = apartados[keyApartado]['subapartados'][sub];
-                                                $(`#ud-${keyUnidad}`).find(`#insertar-subapartado-${sub.split('-')[2]}`).trigger('click', () => {
-                                                      $(`#subapartado-${keyUnidad}-${sub.split('-')[2]}-${contSub}`).val(subapartado)
-                                                      contSub++
-                                                })
-                                          }
-                                    }
-                              }
-                        }
-                  }
-
-                  // Bibliografía
-                  (config.biblio) ? $('#check-biblio').prop('checked', true) : $('#check-biblio').prop('checked', false);
-
-                  // Glosario
-                  (config.glosario) ? $('#check-glosario').prop('checked', true) : $('#check-glosario').prop('checked', false);
-
-                  // Habilitar el botón generar
-                  $('#generar-scorm').removeAttr('disabled');
+                  cargarDatos(config)
             };
       });
+
+      // Activar el autoguardado en el almacen de objetos del navegador con IndexedDB
+      setInterval(() => {
+            // Verificar que todos los campos estan completados
+            let enviar = true;
+            $(formulario).find('input[type=text]').each((index, element) => {
+                  if (element.value === '') {
+                        enviar = false;
+                        return false;
+                  }
+            });
+
+            // Generar config para autoguardado
+            if (enviar) {
+                  const url = '/autoguardado';
+                  const method = $(formulario).attr('method');
+                  $.ajax({
+                        url: url,
+                        method: method,
+                        data: $(formulario).serialize(),
+                        complete: function () { console.log("Proceso de generar curso completado.") },
+                        success: function (respuesta) { setIndexedDB(respuesta.config) },
+                        error: function () { console.log("Error al generar el curso.") }
+                  });
+            }
+      }, 18000);
 }

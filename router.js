@@ -4,12 +4,13 @@ const scorm = require('./controller/Scorm');
 const router = express.Router();
 
 // INICIO APP
-router.get('/', (req, res) => {
-      res.render('configuracion', { titulo: "Configurador Plantilla 12", tituloPantalla: "Configuración del curso" });
-});
+router.get('/', (req, res) => res.render('configuracion', { titulo: "Configurador Plantilla 12", tituloPantalla: "Configuración del curso" }));
 
 // CONFIGURACIÓN
 router.post('/configuracion', configuracion.crearCurso);
+
+// AUTOGUARDADO
+router.post('/autoguardado', configuracion.actualizarConfig);
 
 // DESCARGAR ZIP DEL CURSO
 router.get('/descargarCurso/:titulo', (req, res) => {      

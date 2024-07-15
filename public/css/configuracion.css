@@ -1,8 +1,9 @@
 @import 'general.css';
 
-h1, h2 {
-    font-weight: bold;    
-    margin-bottom: 2rem;    
+h1,
+h2 {
+    font-weight: bold;
+    margin-bottom: 2rem;
     color: var(--color-primario);
 }
 
@@ -12,18 +13,20 @@ select:invalid {
     font-size: 0.9rem;
 }
 
-select option  {
+select option {
     font-style: normal;
     font-size: 1rem;
 }
 
 label {
     font-weight: bold;
+    margin: 0;
+    margin-right: 0.5em;
 }
 
 
 #configuracion-curso .menu .container {
-    margin-top: 0 !important;    
+    margin-top: 0 !important;
 }
 
 #configuracion-curso .menu {
@@ -31,7 +34,7 @@ label {
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 999;
     padding: 1rem;
     background-color: var(--background-1);
     border-bottom: 1px solid var(--gris-1);
@@ -41,21 +44,21 @@ label {
 
 }
 
-#configuracion-curso .menu .btn {    
+#configuracion-curso .menu .btn {
     font-size: 0.8rem;
     padding: 0.1rem 0.5rem;
-    margin: 0 0.25rem;    
+    margin: 0 0.25rem;
 }
 
 #configuracion-curso .menu .btn.active {
     background-color: var(--color-primario);
-    border-color: var(--color-primario);    
-    box-shadow: none;    
+    border-color: var(--color-primario);
+    box-shadow: none;
 }
 
 #configuracion-curso .menu .buscar {
     display: inline-block;
-    color: var(--color-primario);    
+    color: var(--color-primario);
     margin: 0;
     margin-left: 0.5rem;
     float: right;
@@ -64,7 +67,7 @@ label {
 #configuracion-curso .menu .buscar input[type=number] {
     display: inline;
     width: 3rem;
-    font-size: 0.8rem;  
+    font-size: 0.8rem;
     height: 1.5rem;
     text-align: center;
 }
@@ -73,8 +76,8 @@ label {
     margin-top: 6rem;
 }
 
-#configuracion-curso #numTest {    
-    width: 4rem;    
+#configuracion-curso #numTest {
+    width: 5rem;
     text-align: center;
 }
 
@@ -85,7 +88,7 @@ label {
 
 #configuracion-curso #unidades .numUnidad {
     display: inline-block;
-    width: 100%;    
+    width: 100%;
     text-align: center;
     font-style: italic;
     font-weight: bold;
@@ -97,13 +100,13 @@ label {
 
 #configuracion-curso #unidades .unidad .content {
     border: 1px solid var(--color-primario);
-    padding: 2rem;    
+    padding: 2rem;
     background-color: var(--background-2);
-    border-radius: 3px;    
+    border-radius: 3px;
 }
 
 #configuracion-curso #unidades .unidad .content input[type="text"] {
-    width: 94%;    
+    width: 94%;
     display: inline-block;
 }
 
@@ -111,13 +114,17 @@ label {
     margin-top: 4rem;
 }
 
-#configuracion-curso #unidades .unidad .content .ejercicios { 
+#configuracion-curso #unidades .unidad .content .apartados .apartado:not(:last-child) {
+    margin-bottom: 2rem;
+}
+
+#configuracion-curso #unidades .unidad .content .ejercicios {
     margin-top: 1.5rem;
 }
 
 #configuracion-curso #unidades #insertar-unidad,
-#configuracion-curso #unidades .insertar-apartado { 
-    padding: 0;    
+#configuracion-curso #unidades .insertar-apartado {
+    padding: 0;
 }
 
 #configuracion-curso #unidades .unidad .content .subapartados {
@@ -125,16 +132,14 @@ label {
 }
 
 #configuracion-curso #unidades .unidad .content .subapartado {
-    margin-bottom: 1rem;
     margin-top: 1rem;
     width: 99%;
     margin-left: 1%;
 }
 
 #configuracion-curso #unidades .insertar-subapartado {
-    float: right;
-    margin-bottom: 0.5rem;
-    margin-right: 5%;
+    margin-left: 50%;
+    padding: 0;
 }
 
 #configuracion-curso #unidades .eliminar-unidad,
@@ -144,20 +149,20 @@ label {
 }
 
 #configuracion-curso .content-bottom {
-    text-align: center;    
+    text-align: center;
     height: auto;
-    position: fixed; 
+    position: fixed;
     bottom: 1rem;
-    right: 1rem;    
+    right: 1rem;
 }
 
-#configuracion-curso .content-bottom button {    
+#configuracion-curso .content-bottom button {
     display: block;
     margin: 0.5rem;
     width: 3rem;
     height: 3rem;
     font-size: 1.4rem;
-    line-height: 0;    
+    line-height: 0;
     box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
@@ -168,7 +173,7 @@ label {
 #modal-descargar-scorm ul {
     list-style: none;
     text-align: left;
-    margin-left: -3rem;    
+    margin-left: -3rem;
 }
 
 #modal-descargar-scorm ul li {
@@ -186,4 +191,106 @@ label {
 }
 */
 
+body.cargarCursosClick {
+    overflow: hidden;
+}
 
+#cargarCursos {}
+
+.pantallaEmergente {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+    background-color: #00000066;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pantallaEmergente>div {
+    background-color: white;
+    width: 90%;
+    max-height: 80%;
+    /* height: 80%;
+    align-items: center; */
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.pantallaEmergente>div .titulo {
+    position: relative;
+    width: 100%;
+}
+
+.pantallaEmergente>div .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.pantallaEmergente>div .listaCursos {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.pantallaEmergente>div .listaCursos ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.pantallaEmergente>div .listaCursos ul li {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 1em;
+    transition: all 0.2s linear;
+}
+
+.pantallaEmergente>div .listaCursos ul li:not(:first-child) {
+    cursor: pointer;
+}
+
+.pantallaEmergente>div .listaCursos ul li p {
+    margin: 0;
+    width: 100%;
+}
+
+.pantallaEmergente>div .listaCursos ul li p:first-child {
+    width: calc(100%/3);
+}
+
+.pantallaEmergente>div .listaCursos ul li:first-child p {
+    font-weight: bold;
+}
+
+.pantallaEmergente>div .listaCursos ul li:hover:not(:first-child) {
+    background-color: #12858540 !important;
+}
+
+.pantallaEmergente>div .listaCursos ul li:first-child {
+    background-color: var(--color-primario) !important;
+    color: var(--white);
+}
+
+.pantallaEmergente>div .listaCursos ul li:nth-child(odd) {
+    background-color: var(--background-3);
+}
+
+/*PANTALLA DE EDITAR LOS TEXTAREA DE BIBLIO Y GLOSARIO*/
+.pantallaEmergente>div .editContenido {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 2rem;
+    overflow-y: scroll;
+}

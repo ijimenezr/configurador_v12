@@ -3,7 +3,7 @@
 
 body {
     font-family: 'Nunito', sans-serif;
-    font-size: 1rem;   
+    font-size: 1rem;
     width: 100%;
     height: 100%;
     background-color: var(--background-3);
@@ -14,8 +14,8 @@ video,
 audio,
 button:not(.btn-primary),
 input:focus,
-.custom-control-input:focus ~ .custom-control-label::before {
-    outline:0 !important;
+.custom-control-input:focus~.custom-control-label::before {
+    outline: 0 !important;
     box-shadow: none !important;
 }
 
@@ -25,7 +25,8 @@ input:focus,
 
 #configuracion-curso .custom-checkbox,
 #configuracion-curso .content-select {
-    display: inline-block;
+    display: flex;
+    align-items: center;
     margin-right: 1rem;
 }
 
@@ -42,13 +43,13 @@ input:focus,
     color: var(--color-primario);
 }
 
-.btn-outline-primary:not(:disabled):not(.disabled):active, 
-.btn-outline-primary:not(:disabled):not(.disabled).active, 
-.show > .btn-outline-primary.dropdown-toggle,
-.btn-outline-primary:hover {    
+.btn-outline-primary:not(:disabled):not(.disabled):active,
+.btn-outline-primary:not(:disabled):not(.disabled).active,
+.show>.btn-outline-primary.dropdown-toggle,
+.btn-outline-primary:hover {
     background-color: var(--color-primario);
     border-color: var(--color-primario);
-    box-shadow: none;    
+    box-shadow: none;
 }
 
 .btn-primary {
@@ -58,22 +59,27 @@ input:focus,
 
 .btn-primary:disabled {
     background-color: var(--gris-2);
-    
+
 }
 
 .btn-primary:hover,
 .btn-primary.focus,
 .btn-primary:focus,
-.btn-primary:not(:disabled):not(.disabled):active, 
-.btn-primary:not(:disabled):not(.disabled).active, 
-.show > .btn-primary.dropdown-toggle {
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show>.btn-primary.dropdown-toggle {
     background-color: var(--color-primario-hover);
-    border-color: var(--color-primario-hover);    
+    border-color: var(--color-primario-hover);
     box-shadow: none;
 }
 
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Nunito Sans', sans-serif;
 }
 
@@ -84,10 +90,11 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* BARRA DE SCROLL PARA EL MAIN */
-html, body {
+html,
+body {
     /*Estilos estándar experimentales (Principalmente Firefox)*/
-    scrollbar-color: gray rgba(0, 0, 0, 0);    
-    scrollbar-width: thin;    
+    scrollbar-color: gray rgba(0, 0, 0, 0);
+    scrollbar-width: thin;
 }
 
 ::-webkit-scrollbar {
@@ -95,12 +102,13 @@ html, body {
 }
 
 ::-webkit-scrollbar:vertical {
-    width: 8px;    
+    width: 8px;
 }
 
-::-webkit-scrollbar-button:increment,#iyc_container_screen::-webkit-scrollbar-button {
+::-webkit-scrollbar-button:increment,
+#iyc_container_screen::-webkit-scrollbar-button {
     display: none;
-} 
+}
 
 ::-webkit-scrollbar:horizontal {
     height: 2px;
@@ -122,13 +130,126 @@ html, body {
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
+.biblio-glosa a[href="#collapseExample"] {
+    transition: 0.2s linear;
+}
 
+.biblio-glosa a[href="#collapseExample"].click {
+    transform: rotate(180deg);
+}
+
+.biblio-glosa .custom-checkbox>* {
+    margin: 0.5em;
+}
+
+.biblio-glosa input[type=file] {
+    visibility: hidden;
+    position: absolute;
+}
+
+.biblio-glosa .btn.btn-primary.ocultar {
+    position: absolute;
+    visibility: hidden;
+}
+
+.b_info {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    color: var(--color-primario);
+    border: 2px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.7;
+    transition: 0.3s linear;
+}
+
+.b_info svg {
+    width: 10px;
+    height: 10px;
+}
+
+.b_info:hover {
+    opacity: 1;
+}
+
+#content_loadBiblio {
+    flex-wrap: wrap;
+}
+
+#content_loadBiblio {
+    z-index: 99;
+}
+
+/*SUMMERNOTE*/
+.note-fontname svg[data-icon="caret"],
+.note-fontname svg[data-icon="menuCheck"] {
+    display: none;
+}
+
+.panel-default>.panel-heading {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+}
+
+#content_loadBiblio .bibliografias {
+    position: relative;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #ddd;
+}
+
+#content_loadBiblio .bibliografias:last-child {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+#content_loadBiblio .bibliografias .eliminar_biblio {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+#content_loadBiblio .anadir_biblio {
+    position: relative;
+    float: right;
+}
+
+#content_loadBiblio .content_biblios {
+    margin-bottom: 1rem;
+}
+
+#content_loadBiblio .content_biblios:last-child {
+    margin-bottom: 0;
+}
+
+#modal-descargar-curso .modal-dialog {
+    max-width: auto !important;
+}
+
+#modal-descargar-curso .modal-dialog .info_glosaBiblio {
+    display: flex;
+}
+
+#modal-descargar-curso #descargar_infoCurso>div:not(.info_glosaBiblio, .numTest) {
+    margin-bottom: 1em;
+    border-bottom: 1px solid #dee2e6;
+}
+
+#modal-descargar-curso #descargar_infoCurso>.numTest,
+#modal-descargar-curso #descargar_infoCurso>.info_glosaBiblio {
+    margin-bottom: 1em;
+}
